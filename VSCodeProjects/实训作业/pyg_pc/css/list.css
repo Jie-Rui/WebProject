@@ -1,0 +1,100 @@
+/* 列表页专有的css */
+.nav {
+    overflow: hidden;
+}
+.sk {
+    position: absolute;
+    left: 190px;
+    top: 40px;
+    border-left: 1px solid #c81523;
+    padding: 3px 0 0  14px;
+}
+.sk_list {
+    float: left;
+}
+.sk_list  ul li {
+    float: left;
+}
+.sk_list  ul li a {
+    display: block;
+    line-height: 47px;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+}
+.sk_con {
+    float: left;
+}
+.sk_con ul li {
+    float: left;
+}
+.sk_con  ul li a {
+    display: block;
+    line-height: 49px;
+    padding: 0 20px;
+    font-size: 14px;
+   
+}
+.sk_con  ul li:last-child a::after {
+    content: '\e91e';
+    font-family: 'icomoon';
+}
+.sk_bd ul li {
+    overflow: hidden;
+    float: left;
+    margin-right: 13px;
+    width: 290px;
+    height: 460px;
+    border: 1px solid transparent;
+}
+.sk_bd ul li:nth-child(4n) {
+    margin-right: 0;
+}
+.sk_bd ul li:hover {
+    border: 1px solid #c81523;
+}
+
+
+/* 分页部分开始 */
+
+.page {
+    margin: 40px 0 40px 290px;
+    text-align: center;
+}
+.page .page_num li {
+    float: left;
+    margin-right: 3px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+}
+.page .page_num .page_pre,
+.page .page_num .page_next {
+    width: 85px;
+}
+.page .page_num .page_current , 
+.page .page_num .page_more {
+    background-color: #fff;
+    border: none;
+}
+.page .page_jump {
+    height: 36px;
+    line-height: 36px;
+}
+.page .page_jump input {
+    width: 48px;
+    height: 36px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.page .page_jump button {
+    width: 54px;
+    height: 36px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+}
+
+/* 分页部分结束 */

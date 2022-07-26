@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="dv"></div>
+    <script>
+        /* 
+        1、编写函数实现如下功能: 
+        题目描述：把传入的数组的首尾两个元素互换，如
+        var arr = ["鹿晗","王俊凯","蔡徐坤","周杰伦","彭于晏","刘德华","甄子丹"] 
+        */
+
+        
+        /* var arr = ["鹿晗","王俊凯","蔡徐坤","周杰伦","彭于晏","刘德华","甄子丹"];
+        function eleChange() {
+            var temp = 0;
+            temp = arr[0];
+            arr[0] = arr[arr.length - 1];
+            arr[arr.length - 1] = temp;
+            console.log(arr);
+            }
+            eleChange();  */
+        
+
+        /* 
+        2、计算指定日期是今年的第几天
+        题目描述：制作一个，getDayNum(年月日日期)，可以返回指定日期是当前年的第几天
+        例如：getDayNum("2019-1-2") 返回值为：2
+        */
+
+        
+        /* function getDayNum(date) {
+            var d = new Date(date);
+            var year = d.getFullYear();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+            var sum = 0;
+            var arr1 = [31,29,31,30,31,30,31,31,30,31,30,31];
+            var arr2 = [31,28,31,30,31,30,31,31,30,31,30,31];
+            function isRunYear(year) {
+                var year = false;
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    year = true;
+                }
+                return year;
+            }
+            if (isRunYear(year)) {
+                for (var i = 0; i < month - 1; i++) {
+                    sum += arr1[i];
+                }
+                sum += day;
+            }else {
+                for (var i = 0; i < month - 1; i++) {
+                    sum += arr2[i];
+                }
+                sum += day;
+            }
+            console.log('该日期为今年的第' + sum + '天');
+        }
+        getDayNum("2022-7-12");  */
+        
+
+        
+
+        /* 
+        3、 在一个字符串中查找指定的字符，返回其首次出现的下标和出现的次数 
+        */
+        /* 
+        function findString(str, s) {
+            var count = 0;
+            var index = str.indexOf(s);
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] == s) {
+                    count++;
+                }
+            }
+            console.log(index);
+            return count;
+        }
+        console.log(findString("abcbebfb", "b")); 
+        */
+
+
+        /* 
+        4、16进制随机颜色
+        题目描述：使用Math对象，随机生成一个16进制的颜色 
+        */
+        function getColor() {
+            var color = '#';
+            var arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+            for (var i = 0; i < 6; i++) {
+                var num = Math.floor((Math.random() * arr.length));  
+                color += arr[num];
+            }
+            return color;
+        }
+        document.getElementById("dv").style.backgroundColor = getColor();
+        console.log(getColor());
+        
+        
+        /* 
+        5、字符串操作
+        字符串：“abaasdffggghhjjkkgfddsssss3444343”，问题如下：
+        */ 
+        
+        //  1> 字符串的长度 
+        /* function strOperation(str) {
+            console.log(str.length); 
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343"); */
+        
+        //  2> 取出指定位置的字符，如：0,3,5,9等 
+        /* function strOperation(str, n) {
+            console.log(str.charAt(n));
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343", 3); */
+
+        //  3> 查找指定字符是否在以上字符串中存在，如：i，c ，b等 
+        /* function strOperation(str, s) {
+            if (str.indexOf(s) != -1) {
+                console.log("存在");
+            }else {
+                console.log("不存在");
+            }
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343", "c"); */
+
+        //  4> 替换指定的字符，如：g替换为22,ss替换为b等操作方法 
+        /* function strOperation(str, target) {
+            var arr1 = str.replace(/g/g, target)  // replace() 方法首个替换加 /要被替换的字符/  全部替换加 /要被替换的字符/g
+            console.log(arr1);
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343", "22"); */
+
+        //  5> 截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
+        /* function strOperation(str) {
+            console.log(str.substring(1, 6)); 
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343"); */
+
+        //  6> 找出以上字符串中出现次数最多的字符和出现的次数 
+        /* function strOperation(str) {
+            var obj = {};
+            for (var i = 0; i < str.length; i++) {
+                var char = str.charAt(i);
+                if (obj[char]) {
+                    obj[char]++;
+                }else {
+                    obj[char] = 1;
+                }
+            }
+            console.log(obj);
+            var max = 0;
+            var ch = '';
+            for (var k in obj) {
+                if ((obj[k]) > max) {
+                    max = obj[k];
+                    ch = k;
+                }
+            }
+            console.log(ch, max);
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343"); */
+
+        //  7> 遍历字符串，并将遍历出的字符两头添加符号“@”
+        /* function strOperation(str) {
+            var arr = [];
+            for (var i = 0; i < str.length; i++) {
+                arr.push("@" + str[i] + "@");
+            }
+            console.log(arr);
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343"); */
+        
+        
+
+
+        /* 
+        6、随机选学员
+        从以下学员名单中随机选出4个学员：
+    ​	var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"]；
+    ​	注意：不要有重复的学员
+        */
+        /* function select() {
+            var stu = [];
+            var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"]
+            for (var i = 0; i < 4; i++) {
+                var num = parseInt(Math.random() * arr.length);
+                stu.push(arr[num]);
+                arr.splice(num, 1);
+            }
+            return stu;
+        }
+        console.log(select()); */
+
+
+        /* 
+        7、随机排序
+    ​	对以下学员随机排序，生成一个新数组：
+    ​	var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"]；
+        */
+        /* function randomSort() {
+            var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"];
+            var result = [];
+            while (arr.length > 0) {
+                var randomIndex = Math.floor(Math.random() * arr.length);
+                result.push(arr[randomIndex]);
+                arr.splice(randomIndex, 1);
+            }
+            return result;
+        }
+        console.log(randomSort()); */
+    
+    </script>
+</body>
+</html>

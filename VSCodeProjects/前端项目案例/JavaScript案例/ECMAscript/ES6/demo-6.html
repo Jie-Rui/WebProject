@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 定义一个交通工具类，该类有载重量属性和行驶方法、停止使用方法 
+        function Vehicle(weight) {
+            this.weight = weight;
+        }
+        Vehicle.prototype.drive = function() {
+            console.log('正在行驶');
+        }
+        Vehicle.prototype.stop = function() {
+            console.log('停止行驶');
+        }
+        // 这种写法继承不了
+        // Vehicle.prototype = {
+        //     drive: function() {
+        //         console.log('正在行驶');
+        //     },
+        //     stop: function() {
+        //         console.log('停止行驶');
+        //     }
+        // }
+        // 2. 定义卡车类，它是交通工具的子类，子类有自己的品牌属性和装货和卸货方法
+        function Truck(weight,brand) {
+            Vehicle.call(this, weight);
+            this.brand = brand;
+        }
+        Truck.prototype = new Vehicle();
+        Truck.prototype.constructor = Truck;
+        Truck.prototype.load = function() {
+            console.log('正在装货');
+        }
+        Truck.prototype.unload = function() {
+            console.log('正在卸货');
+        }
+        // 这种写法继承不了父级的属性
+        // Truck.prototype = {
+        //     load: function() {
+        //         console.log('正在装货');
+        //     },
+        //     unload: function() {
+        //         console.log('正在卸货');
+        //     }
+        // }
+        var v = new Vehicle(1500);
+        var t = new Truck(1000, '五菱宏光');
+        
+
+        // 设置对象属性
+        // Object.defineProperty(t, 'weight', {
+        //     // 设置属性不可修改
+        //     writable: false,
+        //     // 设置属性不可遍历
+        //     enumerable: false,
+        //     // 设置属性不可删除
+        //     configurable: false
+        // });
+
+        // 获取对象的属性名，返回所有属性名构成的数组，不包含继承的属性和方法
+        // var key = Object.keys(t);
+
+
+        /* 
+        delete 可以删除属性 
+        如果设置该属性不可删除，不会报错，属性不会被删除
+        delete t.weight;
+        console.log(t.weight); // 结果为 undefined，不会报错
+        */
+        
+        /* 
+        给对象新增属性
+        Object.defineProperty(t1, 'test', {
+            value: '123',
+            writable: false
+        }) 
+        */
+
+    </script>
+</body>
+</html>

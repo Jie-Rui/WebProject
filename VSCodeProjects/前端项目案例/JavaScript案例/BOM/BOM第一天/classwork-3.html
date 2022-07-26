@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    手机号码：<input type="number">
+    <button id="btn">发送</button>
+    <script>
+        // 发送短信倒计时案例  (定时器里面的this指向window)
+        var ipt = document.querySelector('input');
+        var btn = document.querySelector('#btn');
+        var time = 10;  // 定义倒计时的秒数
+        btn.addEventListener('click', function() {
+            if (ipt.value.trim() == '') {
+                alert('必须填写电话号码后才能发送！')
+            }else {
+                btn.disabled = true;
+                var timer = setInterval(function() {
+                    if (time == 0) {
+                        clearInterval(timer);
+                        btn.innerHTML = '发送';
+                        btn.disabled = false;
+                        time = 10;  // 倒计时时间要重新复原为初始时间 10
+                    }else {
+                        btn.innerHTML = '还剩下' + time + '秒';
+                        time--;
+                    }
+                }, 1000)
+            }
+        })
+    </script>
+</body>
+</html>

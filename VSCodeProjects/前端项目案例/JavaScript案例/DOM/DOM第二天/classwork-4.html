@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .tab-container {
+            width: 640px;
+            margin: 100px auto;
+        }
+        .tab-title {
+            overflow: hidden;
+        }
+        .tab-title li {
+            float: left;
+            width: 160px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background-color: #eee;
+            border-bottom: 1px solid red;
+        }
+        .tab-title li:hover {
+            background-color: red;
+        }
+        .tab-title .selected {
+            background-color: red;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 选项卡的容器 -->
+    <div class="tab-container">
+        <!-- 选项卡的标题 -->
+        <ul class="tab-title">
+            <li class="selected">商品介绍</li>
+            <li>规格与包装</li>
+            <li>售后保障</li>
+            <li>商品评价</li>
+        </ul>
+        <div class="tab-content">
+            <div class="show">神器</div>
+            <div class="hide">精品</div>
+            <div class="hide">假一赔十</div>
+            <div class="hide">狗都不买</div>
+        </div>
+    </div>
+    <script>
+        var lis = document.querySelectorAll('.tab-title li');
+        var dvs = document.querySelectorAll('.tab-content div');
+        // 标题和内容中自定义属性值相等
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].dataset['index'] = i + 1;
+            dvs[i].dataset['index'] = i + 1;
+        }
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function() {
+                for (var j = 0; j < lis.length; j++) {
+                    lis[j].className = '';
+                }
+                this.className = 'selected';
+                var curIndex = this.dataset['index'];
+                // 找出被单击的标题中的data-index的值 x
+                // 遍历所有的内容，判断内容中的data-index的值 == curIndex
+                for (var x = 0; x < dvs.length; x++) {
+                    if (dvs[x].dataset['index'] == curIndex) {
+                        dvs[x].className = 'show'
+                    }else {
+                        dvs[x].className = 'hide'
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

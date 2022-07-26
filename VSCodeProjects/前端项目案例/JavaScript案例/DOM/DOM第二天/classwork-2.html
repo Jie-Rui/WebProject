@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .contacts {
+            width: 160px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .group h3 {
+            background-color: #eee;
+            border-bottom: 1px solid #ccc;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="contacts">
+        <div class="group">
+            <h3>我的朋友</h3>
+            <div class="person show">
+                <p>张三</p>
+                <p>李四</p>
+            </div>
+        </div>
+        <div class="group">
+            <h3>我的同学</h3>
+            <div class="person hide">
+                <p>张三</p>
+                <p>李四</p>
+            </div>
+        </div>
+        <div class="group">
+            <h3>陌生人</h3>
+            <div class="person hide">
+                <p>张三</p>
+                <p>李四</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var h3s = document.querySelectorAll('.contacts .group h3');
+        for (var i = 0; i < h3s.length; i++) {
+            var h3 = h3s[i];
+            h3.onclick = function() {
+                var per = document.querySelectorAll('.contacts .person');
+                for (var j = 0; j < per.length; j++) {
+                    per[j].className = 'person hide';
+                }
+                this.nextElementSibling.className = 'person show';
+            }
+        }
+    </script>
+</body>
+</html>

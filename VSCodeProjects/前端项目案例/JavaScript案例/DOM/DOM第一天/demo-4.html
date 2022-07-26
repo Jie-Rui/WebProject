@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .night {
+            background-color: #000;
+        }
+        .light {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnClick">开关灯</button>
+    <script>
+        var btn = document.querySelector('#btnClick');
+        var flag = 1;
+        btn.onclick = function() {
+            if (flag == 1) {
+                document.body.className = 'night';
+                flag = 0;
+            }else {
+                document.body.className = 'light';
+                flag = 1;
+            }
+        }
+    </script>
+</body>
+</html>

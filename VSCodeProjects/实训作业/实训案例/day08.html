@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 520px;
+            height: 288px;
+            margin: 100px auto;
+        }
+        .arr-l, .arr-r{
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: rgba(0, 0, 0, .2);
+            text-decoration: none;
+            color: #fff;
+            line-height: 30px;
+        }
+        .arr-l {
+            top: 50%;
+            margin-top: -15px;
+            border-radius: 0 15px 15px 0;
+        }
+        .arr-r {
+            right: 0;
+            top: 50%;
+            margin-top: -15px;
+            border-radius: 15px 0 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <a href="#" class="arr-l">&lt;</a>
+        <img src="./images/ad.jpg" alt="">
+        <a href="#" class="arr-r">&gt;</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .change {
+            outline: 1px solid pink;
+        }
+        form {
+            width: 200px;
+            height: 30px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="text" id="ipt" placeholder="邮箱/ID/手机号">
+    </form>
+    <script>
+        var ipt = document.querySelector('#ipt');
+        ipt.onfocus = function() {
+            ipt.placeholder = ' ';
+            ipt.classList.add ('change');
+        }
+        ipt.onblur = function() {
+            if (ipt.innerHTML == '') {
+                ipt.placeholder = '邮箱/ID/手机号';
+                ipt.classList.remove('change');
+                ipt.style.border = '1px solid pink';
+            }else {
+                ipt.style.border = '1px solid pink';
+            }    
+        }
+    </script>
+</body>
+</html>

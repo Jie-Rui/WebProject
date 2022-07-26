@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 500px;
+            margin: 100px auto;
+        }
+        #talks li {
+            margin-top: 10px;
+            background-color: pink;
+            color: #f00;
+        }
+        #btn {
+            margin: 20px 0;
+        }
+        #talks li a {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <textarea name="text" id="talk" cols="50" rows="10" placeholder="请输入要发布的信息"></textarea>
+        <br>
+        <button id="btn">发布</button>
+        <ul id="talks">
+            <li>
+                我是一楼，我是大帅比
+                <a href="javascript:;">删除</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // 当文本框获得焦点清除提示信息
+        // 当文本框失去焦点，如果没有内容，还原提示信息
+        var txt = document.querySelector('#talk');
+            txt.onfocus = function() {
+                this.placeholder = '';
+            }
+            txt.onblur = function() {
+                if (this.innerHTML == '') {
+                    this.placeholder = '请输入要发布的信息';
+                }
+            }
+            var btn = document.querySelector('#btn');
+            btn.onclick = function() {
+                if (txt.value == '') {
+                    alert('请输入要发布的信息！')
+                }else {
+                    var ul = document.querySelector('#talks');
+                    var li = document.createElement('li');
+                    li.innerHTML = txt.value + "<a href='javascript:;'>删除</a>";
+                    ul.insertBefore(li, ul.children[0])
+                    txt.value = '';
+                    var del = document.querySelectorAll('#talks li a');
+                    for (var i = 0; i < del.length; i++) {
+                        del[i].onclick = function() {
+                            ul.removeChild(this.parentNode);
+                        }
+                    }
+                }
+            }
+    </script>
+</body>
+</html>

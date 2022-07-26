@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(name, age, score) {
+            this.name = name;
+            this.age = age;
+            this.score = score;
+            this.sayHi = function() {
+                console.log('dog say');
+            }
+        }
+        var stu = new Student('小黑子', 18, 20);
+
+        // 获取对象的属性名，返回所有属性名构成的数组，只包含实例属性，不包含静态属性
+        // 只包含了构造函数内的属性，不包含继承的属性
+        var key = Object.keys(stu);
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .w {
+            width: 1200px;
+            margin: 0 auto 10px;
+        }
+        .side-bar {
+            position: absolute;
+            right: 100px;
+            top: 500px;
+            width: 50px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+        .header {
+            height: 200px;
+            background-color: skyblue;
+        }
+        .banner {
+            height: 400px;
+            background-color: pink;
+        }
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="side-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体区域</div>
+    <script>
+        var sideBar = document.querySelector('.side-bar');
+        var banner = document.querySelector('.banner');
+        var bannerTop = banner.offsetTop;
+        var sideBarTop = sideBar.offsetTop - bannerTop;
+        var main = document.querySelector('.main');
+        var goBack = document.querySelector('.goBack');
+        var mainTop = main.offsetTop;
+        document.addEventListener('scroll', function() {
+            // window.pageYOffset 页面被卷去的头部
+            if (window.pageYOffset >= bannerTop) {
+                sideBar.style.position = 'fixed';
+                sideBar.style.top = sideBarTop  + 'px';
+            }else {
+                sideBar.style.position = 'absolute';
+                sideBar.style.top = '500px';
+            }
+            if (window.pageYOffset >= mainTop) {
+                goBack.style.display = 'block';
+            }else {
+                goBack.style.display = 'none';
+            }
+        });
+        goBack.addEventListener('click', function() {
+            // window.scroll(0, 0);
+            animate(window, 0);
+        });
+        // 垂直方向动画函数
+        function animate(el, target, callback) {
+            clearInterval(el.timer);
+            el.timer = setInterval(function() {
+                var step = (target - window.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (window.pageYOffset == target) {
+                    clearInterval(el.timer);
+                    callback && callback();
+                }
+                window.scroll(0, window.pageYOffset + step);
+            }, 30);
+        }
+    </script>
+</body>
+</html>

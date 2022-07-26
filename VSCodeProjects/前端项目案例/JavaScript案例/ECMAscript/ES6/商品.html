@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .low,
+        .high {
+            width: 76px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mobiles">
+        <div class="search-box">
+            <p><span>按照价格搜索:</span>
+                <input type="text" class="low">
+                <input type="text" class="high">
+                <input type="button" value="搜索" class="btn1">
+            </p>
+            <p>
+                <span>按照名称搜索</span>
+                <input type="text" class="name">
+                <input type="button" value="搜索" class="btn2">
+            </p>
+
+        </div>
+        <div class="datas">
+            <table>
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>名称</th>
+                        <th>价格</th>
+                    </tr>
+                </thead>
+                <tbody class="tb">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        var data = [{
+            id: 1,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 999
+        },
+        {
+            id: 3,
+            pname: '荣耀',
+            price: 1299
+        }, {
+            id: 4,
+            pname: '华为',
+            price: 1999
+        }];
+
+        function showData(arr) {
+            var tb = document.querySelector('.tb');
+            tb.innerHTML = '';
+            arr.forEach(function (goods) {
+                var html = '<tr><td>' + goods.id + '</td><td>' + goods.pname + '</td><td>' + goods.price + '</td></tr>';
+                tb.innerHTML += html;
+            });
+        }
+        showData(data);
+
+        document.querySelector(".btn1").onclick = function () {
+            // 检查两个价格文本框是否填写了价格(至少要填写一个)
+            var low = document.querySelector(".low").value;
+            var high = document.querySelector(".high").value;
+            if (low.trim() === "" && high.trim() === "") {
+                alert("按照价格搜索时必须至少填写一个价格");
+            } else {
+                // 填写了价格 , 就可以搜索了
+                var newGoods = data.filter(function (goods) {
+                    return goods.price >= low && goods.price <= high;
+                });
+                // 已经过滤了 , 显示
+                showData(newGoods);
+            }
+        };
+
+        document.querySelector('.btn2').onclick = function () {
+            var goodName = document.querySelector('.name').value;
+            //  1. 使用 filter 方法
+            // if (goodName.trim() === '') {
+            //     alert('请输入要搜索的商品');
+            // } else {
+            //     var newGoods = data.filter(function (goods) {
+            //         var result;
+            //         if (goodName.trim() === goods.pname) {
+            //             result = goods.pname;
+            //             return result;
+            //         }
+            //     });
+            //     showData(newGoods);
+            // }
+
+            // 2. 查询元素 最好使用 some 方法 ，效率更高
+            var arr = [];
+            data.some(function(goods) {
+                if (goods.pname === goodName) {
+                    arr.push(goods)
+                    return true; // return 后面 必须写 true
+                }
+            });
+            showData(arr);
+        };
+
+        document.querySelector('.name').onkeyup = function() {
+            var goodName = document.querySelector('.name').value;
+            var newGoods = data.filter(function(goods) {
+                var result;
+                var item = [];
+                item.push(goods.pname);
+                var items = item.join('');
+                var good = items.indexOf(goodName.trim());
+                if (good >= 0) {
+                    result = goods.pname;
+                    return result;
+                }
+            });
+            showData(newGoods);
+        }
+    </script>
+</body>
+
+</html>

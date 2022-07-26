@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 字面量创建对象
+        var obj = {
+            uname: 'dog',
+            age: 10,
+            sex: '不明',
+            sayDog: function() {
+                console.log('Are you ok!');
+            }
+        }
+        console.log(obj.uname);
+        console.log(obj.age);
+        console.log(obj['sex']);
+        obj.sayDog();
+
+
+        // new Object 创建对象
+        /* var obj = new Object();
+            obj.name =  'pig';
+            obj.sex = '猪';
+            obj.dogSay = function() {
+                console.log('What are you dogSay!');
+            };
+        console.log(obj.name);
+        console.log(obj['sex']);
+        obj.dogSay(); */
+        
+
+
+        // 构造函数创建对象
+        /* function Hero(name, type, blood) {
+            // 定义对象的属性，并给属性赋初始值
+            this.name = name;
+            this.type = type;   // this指针在js中往往指向window对象--浏览器窗口对象
+            this.blood = blood;  
+            this.attack = function(way) {   // 每一个对象都有自己该方法的拷贝，每个对象的的方法是不同的方法，浪费内存
+                console.log(way);
+            }
+        }
+        //在构造函数中不建议定义方法，只要定义属性就OK
+        var houYi = new Hero('后羿', '射手型','500血量');  // 创建对象实例化
+        console.log(houYi.name, houYi.type, houYi.blood);
+        houYi.attack('远程攻击');
+        var lianPo = new Hero('廉颇', '坦克型','1000血量');
+        lianPo.attack('远程攻击');
+        console.log(houYi.attack == lianPo.attack);   // 输出 false 两个所占的内存地址不一样
+        console.log(typeof houYi.attack);    // 类型为 function*/
+
+
+
+
+        //给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+        //回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+        //例如，121 是回文，而 123 不是。
+        /* var isPalindrome = function(x) {
+        if(x < 0) return false;
+        const pre = x;
+        let last = 0;
+        while(x !== 0) {
+            last = last * 10 + x % 10;
+            // 任何数异或0得到该数本身，另外所有二进制运算符都只对整数部分进行运行。
+            // 所以通过异或0就可以实现Math.floor()操作。
+            x = (x / 10) ^ 0;
+        }
+        return pre === last;
+    }; */
+
+
+        /* var isPalindrome = function(x) {
+            if(x < 0) return false;
+            const xStr = x + "";
+            const reverseStr = xStr.split("").reverse().join("");
+            return xStr === reverseStr;
+        }; */
+        
+
+
+        /* 1.编写一个选班长函数，实现如下功能：
+        传入班级的人数，输出当选位班长同学的下标
+        选择班长的方式，全班同学围成一个圈，然后从第一个同学开始报数，第一个同学报数为1，第二个同学报数为2，第三个同学报数为3；
+        第四个同学报数为1，依次类推，报数为3的同学失去当班长的资格，不再参与报数。报数一直持续到圈子中只剩下一个同学为止，
+        这个同学就是当选为班长 */
+        /* function selectMonitor(count) {
+            // 1. 创建数组，循环向数组中加入同学的编号1，2，3...
+            var cls = [];
+            for (var i = 0; i < count; i++) {
+                cls.push(i+1);
+            }
+
+            // 2. 循环报数，剩下来的人数大于1
+            i = 0; // 从第一个同学开始报数
+            var num = 0;  // 报的数据
+            var cnt = count;
+            while (count > 1) {
+                // 如果数组元素没有失去资格就报数
+                if (cls[i] != 0) {
+                    num++;
+                }
+                // 如果报数为3，失去资格
+                if (num == 3) {
+                    cls[i] = 0;
+                    count--;
+                    num = 0;
+                }
+                i++;    // 下标加1，准备下一个同学报数
+                if(i >= cnt) {
+                    i = 0;
+                }
+            }
+            for (var i = 0; i < cnt; i++) {
+                if (cls[i] != 0) {
+                    return i + 1;
+                }
+            }
+        }
+        console.log(selectMonitor(7)); */
+
+
+
+        /* 2. 编写一个函数，打印杨辉三角 */
+        /* function yangHuiTriangle([n, m]) {
+            if (n == 1 || m == 1 || n == m) return 1;
+            return yangHuiTriangle([n-1, m-1]) + yangHuiTriangle([n-1, m]);
+        }
+        var num = parseInt(prompt('请输入要打印的行数'));
+        if (num > 0) {
+            for (var i = 1; i <= num; i++) {
+                for (var j = 1; j <= i; j++) {
+                    document.write(yangHuiTriangle([i, j]) + "&emsp;");
+                }
+                document.write("<br/>");
+            }
+        }else {
+            alert('请输入合适的正整数')
+        } */
+
+    </script>
+</body>
+</html>

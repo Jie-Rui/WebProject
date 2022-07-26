@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .img-td {
+            position: relative;
+        }
+        form img {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            width: 22px;
+            height: 22px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>密码：</td>
+                <td class="img-td">
+                    <input type="password" name="pwd" id="pwd">
+                    <img src="./images/eye.png" alt="" id="eye">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+    <script>
+        var pwd = document.querySelector('#pwd')
+        var eye = document.querySelector('#eye');
+        var flag  = 1;
+        eye.onclick = function() {
+            if (flag == 1) {
+                eye.src = '../images/open.png';
+                pwd.type = 'text';
+                flag = 0;
+            }else {
+                eye.src = '../images/eye.png';
+                pwd.type = 'password';
+                flag = 1;
+            }
+        }
+    </script>
+</body>
+</html>

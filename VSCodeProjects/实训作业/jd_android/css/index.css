@@ -1,0 +1,149 @@
+body {
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: -apple-system, Helvetica, sans-serif;
+    color: #666;
+    line-height: 1.5;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+ul li {
+    list-style: none;
+}
+/* 顶部模块 */
+.top ul li {
+    float: left;
+    height: 45px;
+    background-color: #333;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+}
+.top ul li:nth-child(1) {
+    width: 8%;
+}
+.top ul li:nth-child(1) img {
+    width: 10px;
+}
+.top ul li:nth-child(2) {
+    width: 10%;
+}
+.top ul li:nth-child(2) img {
+    width: 30px;
+    vertical-align: middle;
+}
+.top ul li:nth-child(3) {
+    width: 57%;
+}
+.top ul li:nth-child(4) {
+    width: 25%;
+    background-color: #f63515;
+}
+.box .header {
+    position: fixed;
+    overflow: hidden;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 44px;
+    max-width: 640px;
+    min-width: 320px;
+    background-color: #F63515;
+}
+.box .header .search-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 44px;
+}
+.box .header .search-btn::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 14px;
+    right: 10px;
+    width: 20px;
+    height: 18px;
+    background: url(../images/s-btn.png) no-repeat;
+    background-size: 20px 18px;
+}
+.search {
+    height: 30px;
+    margin: 7px 41px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+.box .header .search-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+}
+.box .banner img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+/* 主体内容 */
+.brand {
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+.brand div {
+    float: left;
+    width: 33.3%;
+}
+.brand div img {
+    width: 100%;
+}
+/* nav内容 */
+.nav ul li {
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+.nav ul li img {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
+.nav ul li a {
+    color: #333;
+}
+.nav ul li span {
+    display: block;
+    margin-top: 6px;
+}
+/* 内容模块 */
+.content {
+    width: 100%;
+}
+.content div {
+    float: left;
+}
+.content div:nth-of-type(1) {
+    width: 50%;
+}
+.content div:nth-of-type(2) {
+    width: 25%;
+}
+.content div:nth-of-type(3) {
+    width: 25%;
+}
+.content div img {
+    width: 100%;
+}

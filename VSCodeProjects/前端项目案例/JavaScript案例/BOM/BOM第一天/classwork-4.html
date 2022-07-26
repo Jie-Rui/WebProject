@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <span id="info" style="display: none;">你在<span id="count" style="color: red;"></span>秒后跳转页面</span>
+    <script>
+        var btn = document.querySelector('#btn');
+        // 点击按钮计时 5 秒后跳转页面
+        btn.addEventListener('click', function() {
+            var info = document.querySelector('#info');
+            info.style.display = 'block';
+            var count = 5;
+            document.querySelector('#count').innerHTML = '还剩' + count + '秒跳转';
+            var timer = setInterval(function() {
+                if (count == 0) {
+                    window.location.href = 'classwork-2.html';
+                }else {
+                    count--;
+                    document.querySelector('#count').innerHTML = '还剩' + count + '秒跳转';
+                }
+            }, 1000)
+        });
+    </script>
+</body>
+</html>

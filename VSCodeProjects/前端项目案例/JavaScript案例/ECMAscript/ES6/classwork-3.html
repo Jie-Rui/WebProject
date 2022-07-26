@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Father {
+            constructor(money, cars, house, company) {
+                this.money = money;
+                this.cars = cars;
+                this.house = house;
+                this.company = company;
+            }
+            manage() {
+                console.log('德凯奥特曼');
+            }
+        }
+        class Son extends Father {
+        }
+        var father = new Father(1000, 'Lamborghini', '别墅', '腾讯公司');
+        var son = new Son(500, 'IronMan', '别墅', '奥创公司');
+    </script>
+</body>
+</html>

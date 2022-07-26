@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 600px;
+            margin: 0 auto;
+        }
+        .fm {
+            width: 600px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .fm thead {
+            background-color: purple;
+        }
+        .fm tbody tr {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <td>
+                        请输入姓名:
+                    </td>
+                    <td>
+                        <input type="text" name="name" id="uname" placeholder="请输入姓名">
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>请输入邮箱:</td>
+                    <td><input type="email" name="mail" id="mail" placeholder="请输入邮箱"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <!-- button 的type属性默认是 submit，点击之后元素会一闪而过，所以要把type 属性改为button -->
+                    <td><button type="button" id="btnAdd">添加</button></td>
+                </tr>
+            </table>
+            <table border="1"  cellspacing="0" class="fm">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>邮箱</th>
+                    </tr>
+                </thead>
+                <tbody id="tb"></tbody>
+            </table>
+        </form>
+    </div>
+    <script>
+        var btn = document.querySelector('#btnAdd');
+        // 如果输入框为空，弹出对话框，信息为请将数据填入完全
+        btn.onclick = function() {
+            var uname = document.querySelector('#uname');
+            var mail = document.querySelector('#mail');
+            if (uname.value == '' || mail.value == '') {
+                alert('请将数据填入完全！');
+            }else {
+                var tr = document.createElement('tr');
+                var td1 = document.createElement('td');
+                var td2 = document.createElement('td');
+                var tb = document.querySelector('#tb');
+                td1.innerHTML = uname.value;
+                td2.innerHTML = mail.value;
+                tb.appendChild(tr);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+            }
+        }
+    </script>
+</body>
+</html>

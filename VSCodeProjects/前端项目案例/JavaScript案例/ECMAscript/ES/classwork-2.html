@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var num = parseInt(prompt('输入一个正整数:'));
+        if (num % 3 == 0 && num % 5 == 0) {   //判断是否能够同时被3和5整除
+            alert("好的");
+        }else {
+            alert("数据不合格，请重新输入");
+        } */
+        
+
+        
+        /* var num = parseInt(prompt('输入一个正整数:'));
+        var sum = 0;    //声明一个所有因子之和的总和sum
+        for (var i = 1; i < num; i++) {  //for循环计算所有因子之和
+            if (num % i == 0) {
+                sum += i
+            }
+        }
+        if (num == sum) {   //这个数是否等于本身，判断是否是完数
+            alert("这个数是完数");
+        }else {
+            alert("这个数不是完数");
+        } */
+
+        //if条件判断语句比较大小
+        /* var num1 = prompt("请输入一个数");
+        var num2 = prompt("请输入一个数");
+        if (num1 >= num2) {         //比较两个数据，判断大小
+            console.log('其中较小的数是：' + num2);
+        }else {
+            console.log('其中较小的数是：' + num1);
+        } */
+
+        //三元表达式比较大小
+        /* var num1 = Number(prompt("请输入一个数"));
+        var num2 = Number(prompt("请输入一个数"));
+        var num3 = num1 > num2 ? num2 : num1;
+        console.log('其中较小的数是：' + num3); */
+
+
+        //旅游景点门票收费
+        /* var age = prompt('游客请输入年龄：');
+        var sex = prompt('请输入游客的性别（男|女）：');
+        var ticket = Number(prompt('请输入门票全价：'));
+        if (age < 7 || age > 60) {
+            alert('门票免费');
+        }else if (age <= 18) {
+            alert('门票半价：' + ticket * 0.5 + '元');
+        }else if (age <= 60 && sex == '女') {
+            alert('门票8折：' +  ticket * 0.8 + '元');
+        }else if (age <= 60 && sex == '男') {
+            alert('门票全票：' + ticket + '元');
+        } */
+
+        //5.判断小明的分数所对应的奖惩
+        /* var jsScore = Number(prompt('小明的JS分数是：'));
+        var sportScore = Number(prompt('小明的体育分数是：'));
+        if (jsScore >= 90 && sportScore > 80) {
+            alert('奖励一个华硕笔记本');
+        }else {
+            alert('惩罚暑假学习JS');
+        } */
+
+        //6.求输入月份的天数
+        /* var year = parseInt(prompt('请输入一个年份：'));
+        var month = parseInt(prompt('请输入一个月份：'));
+        if (year % 400 == 0 || year % 4 ==0 && year % 100 != 0) {   //用if条件语句先判断这个年份是否是闰年
+            switch(month) {      //再用分支语句匹配对应月份的天数
+                case 1,3,5,7,8,10,12:
+                    alert('这个月的天数为31天');
+                    break;
+                    case 2:
+                alert('这个月的天数为29天');
+                    break;
+                case 4,6,9,11:
+                    alert('这个月的天数为30天');
+                    break;
+                default:
+                    alert('请重新输入一个月份');
+            }
+        }else {
+            switch(month) {
+                case 1,3,5,7,8,10,12:
+                    alert('这个月的天数为31天');
+                    break;
+                case 2:
+                    alert('这个月的天数为28天');
+                    break;
+                case 4,6,9,11:
+                    alert('这个月的天数为30天');
+                    break;
+                default:
+                    alert('请重新输入一个月份');
+            }
+        } */
+
+        //7.水仙花数
+        var num = parseInt(prompt('请输入一个三位数的正整数：'));
+        var geiWei = parseInt(num % 10);
+        var shiWei = parseInt((num % 100) / 10);
+        var baiWei = parseInt(num / 100);
+        // var sum = geiWei*geiWei*geiWei + shiWei*shiWei*shiWei + baiWei*baiWei*baiWei; //求出这个三位数三个数字的立方和
+        var sum = Math.pow(geiWei,3) + Math.pow(shiWei,3) + Math.pow(baiWei,3); //用Math方法求出三位数三个数字的立方和
+        if (num == sum) {   //用if条件语句判断这个正整数是否和这个三位数三个数字的立方和相等
+            alert(num + '是水仙花数');
+        }else {
+            alert(num + '不是水仙花数');
+        }
+    </script>
+</body>
+</html>

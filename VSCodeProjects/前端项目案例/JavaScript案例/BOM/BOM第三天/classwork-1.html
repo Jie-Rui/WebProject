@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>用户注册</h1>
+    <form action="javascript:;" method="post" id="myform">
+        <table>
+            <tr>
+                <td>账号：</td>
+                <td><input type="text" name="username" id="username"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" name="pwd" id="pwd"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>邮箱：</td>
+                <td><input type="email" name="email" id="email"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <tr>
+                    <td>邮政编码：</td>
+                    <td><input type="number" name="code" id="zip"></td>
+                    <td class="info">*</td>
+                </tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="sub" value="提交">
+                    <input type="reset" name="res" value="重置">
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            
+        </table>
+    </form>
+    <script>
+        // 表单验证
+        /* 
+        // 1. onsubmit ,字符串内置对象的方法
+        var form = document.querySelector('#myform');
+        form.addEventListener('submit', function(e) {
+            var username = document.querySelector('#username');
+            var td = username.parentNode.nextElementSibling;
+            if (username.value.trim() === '') {
+                td.innerHTML = '账号不能为空';
+                td.style.color = 'red';
+                e.preventDefault;
+            }else {
+                td.innerHTML = '合法账号';
+                td.style.color = 'green';
+            }
+            var pwd = document.querySelector('#pwd');
+            var pwdTd = pwd.parentNode.nextElementSibling;
+            if (pwd.value.trim().length < 6) {
+                pwdTd.innerHTML = '密码的长度不能小于6';
+                pwdTd.style.color = 'red';
+                e.preventDefault;
+            }else {
+                pwdTd.innerHTML = '合法密码';
+                pwdTd.style.color = 'green';
+            }
+        });
+         */
+
+        // 2. onblur, 字符串内置对象的方法
+        
+        /* 
+        var username = document.querySelector('#username');
+        var pwd = document.querySelector('#pwd');
+        var email = document.querySelector('#email');
+        username.addEventListener('blur', function() {
+            var td = this.parentNode.nextElementSibling;
+            if (username.value.trim() === '') {
+                td.innerHTML = '账号不能为空';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '合法账号';
+                td.style.color = 'green';
+            }
+        });
+        pwd.addEventListener('blur', function() {
+            var pwdTd = this.parentNode.nextElementSibling;
+            if (pwd.value.trim().length < 6) {
+                pwdTd.innerHTML = '密码的长度不能小于6';
+                pwdTd.style.color = 'red';
+            }else {
+                pwdTd.innerHTML = '合法密码';
+                pwdTd.style.color = 'green';
+            }
+        });
+        email.addEventListener('blur', function() {
+            var td = this.parentNode.nextElementSibling;
+            var index = this.value.indexOf('@');
+            if (index <= 0) {
+                td.innerHTML = '不合法的邮箱地址';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '有效邮箱地址';
+                td.style.color = 'green';
+            }
+        }); 
+        */
+
+        // 3. onblur 正则表达式
+        var username = document.querySelector('#username');
+        var pwd = document.querySelector('#pwd');
+        var email = document.querySelector('#email');
+        var zip = document.querySelector('#zip');
+        username.addEventListener('blur', function() {
+            var reg = new RegExp('\\w{1,}', 'ig');
+            var td = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                td.innerHTML = '账号不能为空';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '合法账号';
+                td.style.color = 'green';
+            }
+        });
+        pwd.addEventListener('blur', function() {
+            // var reg = new RegExp('\\w{6,}', 'ig');
+            var reg = /^[abc]\d{5,}$/ig
+            var pwdTd = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                pwdTd.innerHTML = '密码的长度不能小于6';
+                pwdTd.style.color = 'red';
+            }else {
+                pwdTd.innerHTML = '合法密码';
+                pwdTd.style.color = 'green';
+            }
+        });
+        zip.addEventListener('blur', function() {
+            var reg = /^\d{6}$/ig;  // ^ 是开始匹配， $ 是结束匹配
+            var td = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                td.innerHTML = '邮箱编码必须是六位的数字';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '有效的邮箱编码';
+                td.style.color = 'green';
+            }
+        }); 
+    </script>
+</body>
+</html>

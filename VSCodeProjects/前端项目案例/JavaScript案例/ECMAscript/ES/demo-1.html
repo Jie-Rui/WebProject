@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1-判断时间阶段
+        /* var timer = prompt('请问现在几点了？');
+        if (timer <= 5) {               //从小到大比较
+            alert('这是休息时间，不要说话');
+        }else if (timer <= 12) {
+            alert('上午好');
+        }else if (timer <= 18) {
+            alert('下午好');
+        }else if (timer <= 23) {
+            alert('晚上好');
+        } */
+
+        //2-比较两个数的最大值
+        var num1 = Number(prompt("请输入第一个数")); 
+        var num2 = Number(prompt("请输入第二个数"));
+        var num3 = num1 > num2 ? num1 : num2;  // num1和num2比较要有一个变量为数字类型
+        alert('最大值为：' + num3); 
+
+        //3-判断奇偶性
+        /* var num = parseInt(prompt('请输入一个数'));
+        if (num % 2 == 0) {
+            alert('这个数为：偶数');
+        }else {
+            alert('这个数为：奇数');
+        } */
+
+        //4-判断星期
+        /* var date = prompt('请输入日期数(1-31)：');
+        if (date % 7 == 0) {
+            alert('今天星期天');
+        }else if (date % 7 == 1) {
+            alert('今天星期一');
+        }else if (date % 7 == 2) {
+            alert('今天星期二');
+        }else if (date % 7 == 3) {
+            alert('今天星期三');
+        }else if (date % 7 == 4) {
+            alert('今天星期四');
+        }else if (date % 7 == 5) {
+            alert('今天星期五');
+        }else if (date % 7 == 6) {
+            alert('今天星期六');
+        } */
+
+        //5-请客吃饭
+        /* var money = prompt('班长口袋里的钱数');
+        if (money >= 2000) {      //从大到小比较
+            alert('请大家吃西餐');
+        } else if (money >= 1500) {
+            alert('请大家吃快餐');
+        }else if (money >= 1000) {
+            alert('请大家喝饮料')
+        }else if (money >= 500) {
+            alert('请大家吃棒棒糖');
+        }else {
+            alert('下次把钱带够');
+        } */
+
+        
+        //6-成绩表
+        /* var score = Number(prompt('请输入一个分数：'));
+        if (score >= 90) {   //从大到小比较
+            console.log('A');
+        }else if (score >= 80) {
+            console.log('B');
+        }else if (score >= 70) {
+            console.log('C');
+        }else if (score >= 60) {
+            console.log('D');
+        }else {
+            console.log('E');
+        } */
+    </script>
+</body>
+</html>

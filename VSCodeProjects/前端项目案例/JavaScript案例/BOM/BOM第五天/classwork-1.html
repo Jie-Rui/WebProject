@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>商品名称</td>
+                <td>价格</td>
+                <td>数量</td>
+            </tr>
+        </thead>
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+    <button id="btn">新增一行</button>
+    <script>
+        $(function() {
+            $('#btn').click(function() {
+                $('#tb').append('<tr><td>' + '格力空调' + '</td><td>' + 3000 + '</td><td>' + 80 + '</td></tr>');
+            })
+        })
+    </script>
+</body>
+
+</html>

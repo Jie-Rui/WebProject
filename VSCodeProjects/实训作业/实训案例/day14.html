@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D转换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            float: left;
+            width: 100px;
+            height: 50px;
+            list-style: none;
+            margin: 20px;
+        }
+        ul li .box {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all .3s;
+        }
+        ul .box:hover {
+            transform: rotateX(90deg);
+        }
+        ul li a {
+            display: block;
+            width: 100px;
+            height: 25px;
+            text-decoration: none;
+            color: #666;
+            text-align: center;
+            line-height: 25px;
+        }
+        .front {
+            background-color: pink;
+            transform: translateZ(12.5px);
+        }
+        .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: lightgreen;
+            transform:  translateY(12.5px) rotateX(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <div class="box">
+                <a href="#" class="front">前端工程师</a>
+                <a href="#" class="back">Hello</a>
+            </div>
+        </li>
+        <li>
+            <div class="box">
+                <a href="#" class="front">前端工程师</a>
+                <a href="#" class="back">Hello</a>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        /*  1. 创建一个电脑对象，有颜色（color）、重量（weight）、品牌（brand）、型号（type）等属性，
+        有看电影（watch）、听音乐（listen）、打游戏（play）和敲代码（coding）等方法
+        在调用方法时分别打印我在看电影/听音乐/打游戏/敲代码 */
+        /* var computer = {
+            color: 'black',
+            weight: 20,
+            brand: 'Legion',
+            type: '00330-80000-00000-AA297',
+            watchMovie: function() {
+                console.log('我在看电影');
+            },
+            listenMusic: function() {
+                console.log('我在听音乐');
+            },
+            palyGames: function() {
+                console.log('我在玩游戏');
+            },
+            codingCode: function() {
+                console.log('我在敲代码');
+            }
+        }
+        computer.watchMovie();
+        computer.listenMusic();
+        computer.palyGames();
+        computer.codingCode(); */
+
+
+        // 2.遍历下面对象
+        /* var dog = {
+            dName: 'coco',
+            type: '阿拉斯加犬',
+            age: '5岁',
+            color: '棕红色'
+        }
+        for (var k in dog) {
+            console.log(k);
+            console.log(dog[k]);
+        } */
+
+
+        // 3. 请描述下面代码的输出结果及运行原因
+        /* var num = 1;
+        function demo() {
+            console.log(num);  // 输出结果为：undefined  原因：由于JavaScript预解析，把num变量和demo函数提升到作用域最前面，赋值不提升，所以num只声明没有赋值
+            function demoSon() {
+                console.log(num);  // 输出结果为：2  原因：在demo函数作用域内，由于JavaScript预解析，把num变量和demoSon函数提升到作用域最前面，赋值不提升，num = 2在demoSon()前面，所以输出2
+                num = 3;
+                console.log(num);  // 输出结果为：3  原因：在demoSon作用域内，num = 3 在console.log(num)前面，所以直接输出3
+            }
+            var num = 2;
+            demoSon();
+        }
+        demo();  //  */
+
+
+        // 4. 请使用argument完成函数getResult，实现得到输入的所有的数值中的最小值，最大值，平均数，总和等功能
+        /* function getResult() {
+            var sum = 0, averages = 0;
+            var max = arguments[0];
+            var min = arguments[0];
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+                averages = parseFloat(sum / arguments.length);
+                if (arguments[i] > max) {
+                    max = arguments[i];
+                }
+                if (arguments[i] < min) {
+                    min = arguments[i];
+                }
+            }
+            var numValue = {
+                sum: sum,
+                max: max,
+                min: min,
+                averages: averages
+            }
+            return numValue;
+        }
+        console.log(getResult(2,4,6,8)); */
+
+
+        /* 5.书写一个函数，判定指定数是否存在于指定数组中 要求：
+        函数名称：exist
+        函数调用方式：exist(数据data，数组arr)
+        函数功能：判断 “数据data”是否存在于“数组arr”中，如果是函数返回值为true，如果不是函数返回值为false */
+        /* function exist(data, arr) {
+            var flag = true;
+            for (var i = 0; i < arr.length; i++) {
+                if (data === arr[i]) {
+                    return flag;
+                }
+            }
+            return false;
+        }
+        console.log(exist('1',['1','3','5'])); */
+
+        // 6. 以下有两个数组，一个数组arr是班级里所有学员的名称，一个数组currentArr是提交了每日反馈的学员名单，请创建一种算法，把未提交每日反馈的学员筛选出来
+        var arr = ["张瑞淑", "徐海涛", "谢岗岗", "薛鹏", "魏明杨", "党婷", "熊飞", "郑翠翠", "李航卫", "屈涛", "汪孝双", "代攀飞", "武志钰", "王亚龙", "周芙榕", "李涛", "郝颖", "文冲洋", "王旭拯", "胡佳豪", "寇晓丽", "马晓晗","王思聪", "张绿", "李德", "郑萍", "张凯", "张嘉成", "葛云侠", "杨磊", "任变", "景德", "高卷林", "刘益凡", "赵娜", "陈章鸣", "张荣召", "赵凯旋", "程倩倩", "脱朝平", "刘吉利", "郭苗苗", "马建峰", "潘瑞", "闫翔", "马晨", "李轩轩", "黄红梅", "刘书彬", "罗强", "刘东","王可可", "陈泽文", "李嘉琪", "段佳琦", "黄燕", "邱淑鸿", "宋翔宇", "王波", "樊琳", "王兆国", "许成", "李兴"];
+
+        var currentArr = ["张瑞淑", "徐海涛", "谢岗岗", "薛鹏", "魏明杨", "党婷", "熊飞", "郑翠翠", "李航卫", "屈涛", "汪孝双", "代攀飞", "武志钰", "王亚龙", "周芙榕", "李涛", "郝颖", "文冲洋", "王旭拯", "胡佳豪", "寇晓丽", "马晓晗", "张绿", "李德","郑萍", "张凯", "张嘉成", "葛云侠", "杨磊", "任变", "景德", "高卷林", "刘益凡", "赵娜", "陈章鸣", "张荣召", "赵凯旋", "程倩倩", "脱朝平", "刘吉利", "郭苗苗", "马建峰", "潘瑞", "闫翔", "马晨", "李轩轩", "黄红梅", "刘书彬", "罗强", "刘东", "陈泽文", "李嘉琪", "段佳琦", "黄燕", "邱淑鸿", "宋翔宇", "王波", "樊琳", "王兆国", "许成", "李兴"];
+
+        function screen() {
+            var unComArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < currentArr.length; j++) {
+                    if (arr[i] == currentArr[j]) {
+                        arr.splice(i,1);   // 删除已提交的学员，剩下的就是没交的学员
+                        unComArr = arr;
+                    }
+                }
+            }
+            return unComArr;
+            // console.log(unComArr);
+        }
+        console.log(screen());   
+        // screen();     
+        
+    </script>
+</body>
+</html>

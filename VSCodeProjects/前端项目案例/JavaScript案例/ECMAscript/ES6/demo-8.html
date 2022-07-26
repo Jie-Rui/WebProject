@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Father(money, cars, house, company) {
+            this.money = money;
+            this.cars = cars;
+            this.house = house;
+            this.company = company;
+        }
+        Father.prototype.manage = function() {
+            console.log('可以实现管理');
+        }
+        function Son(money, cars, house, company) {
+            Father.call(this, money, cars, house, company);
+        }
+        Son.prototype = new Father();
+        Son.prototype.constructor = Son;
+        var f = new Father(1000, 'Lamborghini', '别墅', '腾讯公司');
+        var s = new Son(500, 'IronMan', '别墅', '奥创公司');
+    </script>
+</body>
+</html>

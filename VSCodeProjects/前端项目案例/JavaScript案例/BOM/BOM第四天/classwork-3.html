@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .contacts {
+            width: 240px;
+            height: 320px;
+            border: 1px solid #ccc;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .group h2 {
+            background-color: #eee;
+            border-bottom: 1px solid #ccc;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <div class="contacts">
+        <div class="group">
+            <h2>大学同学</h2>
+            <div class="ps">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+            </div>
+        </div>
+        <div class="group">
+            <h2>朋友</h2>
+            <div class="ps hide">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+            </div>
+        </div>
+        <div class="group">
+            <h2>陌生人</h2>
+            <div class="ps hide">
+                <p>1</p>
+                <p>2</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $('.contacts>.group>h2').click(function() {
+                $('.ps').removeClass('hide').addClass('hide');
+                $(this).next('div').removeClass('hide');
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.写一个函数，能返回传入的任意两个数字的最大值
+        /* function getMax(a, b) {
+            if (a >= b) {
+                return = a;
+            }else {
+                return = b;
+            }
+        }
+        var max = getMax(5,10);
+        console.log('两个数的最大值为：' + max); */
+
+        /*  function getMax(a, b) {
+            return a > b ? a : b;
+        }
+        var max = getMax(5,10);
+        console.log('两个数的最大值为：' + max); */
+
+
+        // 2.写一个函数，能返回传入的任意三个数字的最大值
+        /* function getMax(x, y, z) {
+            var max = 0;
+            if (x > y) {
+                max = x;
+            }else {
+                max = y;
+            }
+            if (z > max) {
+                max = z;
+            }else {
+                max = max;
+            }
+            return max;
+        }
+        var bigNum = getMax(15,3,13);
+        console.log('三个数的最大值为：' + bigNum); */
+
+        // 3.写一个函数，能传入的一个数值是否是质数，如果是质数返回true，如果不是质数返回false
+        /* function getPrime(prime) {
+            var flag = true;
+            for (var i = 2; i <= prime; i++) {
+                if (prime == i && prime != 1) {
+                    flag = flag;
+                }else if (prime == 1 || prime % i == 0) {
+                    flag = false;
+                } 
+            }
+            return flag;
+        }
+        console.log(getPrime(10)); */
+
+
+        // 4.写一个函数，能翻转传入的任意数组，并把翻转结果通过返回值返回
+        /* function reverseArr(arr) {
+            var arr1 = [];
+            arr1 = arr.reverse();
+            return arr1;
+        }
+        var arr2 = reverseArr([1,2,3,4,5]);
+        console.log(arr2); */
+
+
+        // 5.写一个函数，能对所有传入的数组按照从小到大进行排序，并把排序结果通过返回值返回
+        /* function bubbleSort(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j+1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        var re = bubbleSort([30, 10, 18, 56, 22]);
+        console.log(re); */
+
+
+
+        /* function sort(arr) {
+            return arr.sort(function(a,b) {
+                return a - b;
+            });
+        } */
+
+
+        // 6.简易计算器
+        /* var sum = 0;
+        function add(a, b) {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a + b);
+        }
+        function sub() {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a - b);
+        }
+        function mul() {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a * b);
+        }
+        function div() {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a / b);
+        }
+        function calculator(operation) {
+        switch(operation) {
+            case '1':
+                add();
+                alert('运算结果是:' + sum);
+                break;
+            case '2':
+                sub();
+                alert('运算结果是:' + sum);
+                break;
+            case '3':
+                mul();
+                alert('运算结果是:' + sum);
+                break;
+            case '4':
+                div();
+                alert('运算结果是:' + sum);
+                break;
+            case '5':
+                alert('正在退出计算器！');
+                break;
+            }
+            if (operation != '5') {
+            calculator(prompt('欢迎使用简易计算器:' + '\n' + '1.加法运算' + '\n' + '2.减法运算' + '\n' + '3.乘法运算' + '\n' + '4.除法运算' + '\n' + '5.退出' + '\n' + '请输入您的选项:'));
+            }
+        }
+        calculator(prompt('欢迎使用简易计算器:' + '\n' + '1.加法运算' + '\n' + '2.减法运算' + '\n' + '3.乘法运算' + '\n' + '4.除法运算' + '\n' + '5.退出' + '\n' + '请输入您的选项:')); */
+        
+
+
+    // 给定一个整数数组 nums 和一个整数目标值 target
+    // 请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+    /* var twoSum = function(nums, target) {
+    const map = new Map();
+    for(let i = 0, len = nums.length;i < len;i++) {
+        if(map.has(target - nums[i])) {
+            return [map.get(target - nums[i]), i];
+        }
+        map.set(nums[i], i);
+    }
+    return [];
+}; */
+
+
+    /*  var twoSum = function(nums, target) {
+        for (var i = 0; i < nums.length; i++) {
+            // 同一个元素不能重复出现
+            for (var j = i+1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target)
+                    return [i, j]
+        }
+    }
+};
+console.log(twoSum([3,2,4], 6)); */
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <script>
+        var btn = document.querySelectorAll('input[type="button"]');
+        for (var i = 0; i < btn.length; i++) {
+            var b = btn[i];
+            b.onclick = function() {
+                for (var j = 0; j < btn.length; j++) {    // 排他思想
+                    btn[j].classList.remove('bg');
+                }
+                this.classList.add('bg');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 200px;
+            text-align: center;
+            margin: 100px auto;
+        }
+        table thead {
+            background-color: pink;
+        }
+        table tbody tr {
+            background-color: #eee;
+        }
+        table tbody tr td {
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <table cellspacing = 0>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="chkAll"></th>
+                <th>商品</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            <tr>
+                <td><input type="checkbox" id="chk"></td>
+                <td>iPhone6</td>
+                <td>3999</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="chk"></td>
+                <td>iPhone6 plus</td>
+                <td>4999</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="chk"></td>
+                <td>iPhone10</td>
+                <td>5299</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="chk"></td>
+                <td>iPhone10 plus</td>
+                <td>5999</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var chkAll = document.querySelector('#chkAll');
+        var chks = document.querySelectorAll('#tb input[type="checkbox"]');
+        chkAll.onclick = function() {
+            for (var i = 0; i < chks.length; i++) {
+                chks[i].checked = this.checked;
+            }
+        }
+        // 单击其他复选框，如果有其他复选框没有选中，则全选复选框不选中
+        // 其他复选框全部选中，则全选复选框不选中
+        for (var i = 0; i < chks.length; i++) {
+            chks[i].onclick = function() {
+                var flag = true;  // 全部选中
+                for (var i = 0; i < chks.length; i++) {
+                    if (!chks[i].checked) {
+                        flag = false;  // 没有全部选中
+                        break;
+                    }
+                }
+                chkAll.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>

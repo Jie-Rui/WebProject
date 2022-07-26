@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 1. 调用数组的 forEach() 方法遍历数据
+    var num = [100, 200, 300];
+    // val 数组元素
+    // index 数组元素下标
+    // arr 当前数组
+    num.forEach(function(val, index, arr) {
+        console.log(val, index, arr);
+    });
+
+
+    // 2. 数组方法 filter 过滤数组
+    var res = num.filter(function(val, index, arr) {
+        return val >= 200;
+    });
+    console.log(res);
+
+
+    // 3. 数组方法 some()
+    var flag = num.some(function(val, index, arr) {
+        return val < 200;
+    });
+    console.log(flag);
+    </script>
+</body>
+</html>

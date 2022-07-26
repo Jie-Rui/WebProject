@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(name, age, score) {
+            this.name = name;
+            this.age = age;
+            this.score = score;
+        }
+        // protopyte 内部指向原型对象，在开发中不使用
+        
+        Student.prototype.study = function() {
+            console.log(this.name + '正在学习...');
+        }
+        var zs = new Student('zs', 18, 90);
+        var ls = new Student('ls', 19, 95);
+
+        // 通过对象调用方法，先在对象自己的内存中查找方法，如果没有，就沿着对象的__proto__查找原型对象
+        zs.study();
+        ls.study();
+        console.log(zs.__proto__);
+        console.log(Student.prototype);
+    </script>
+</body>
+</html>

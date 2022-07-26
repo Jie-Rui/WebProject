@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //计算数组中3倍数的和
+        /* var arr = [7, 11, 18, 20, 12, 14, 99];
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] % 3 == 0) {
+                sum += arr[i];
+            }
+        }
+        console.log('数组中所有3的倍数的和是' + sum); */
+
+        //统计数组中能被3和5都整除的元素的个数
+        /* var arr = [7, 11, 18, 20, 12, 14, 99, 15];
+        var count = 0;
+        for (var i = 0; i <= arr.length; i++) {
+            if (arr[i] % 3 == 0 && arr[i] % 5 == 0) {
+                count++;
+            }
+        }
+        console.log('数组中3和5的公倍数有' + count + '个'); */
+
+
+        //折半算法排序
+        /* var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        var min = 0, max = data.length - 1;
+        var target = parseInt(prompt('请输入要查找的数据：'));
+        // 当最小下标小于等于大下标时，意味着数据还没找到
+        while (min <= max) {
+            // 计算中间位置的下标
+            var mid = parseInt((min + max) / 2);
+            if (data[mid] == target) {  // 如果数组中间位置的数据与中间下标的数据相等，跳出循环
+                break;
+            }else if (data[mid] > target) { // 如果数组中间位置的数据大于中间下标的数据，最大下标为中间下标减1
+                max = mid - 1;
+            }else {  // 如果数组中间位置的数据小于中间下标的数据，最小下标变为为中间下标加1
+                min = mid + 1;
+            }
+        }
+        if (min <= max) {
+                console.log('找到了，位置是：' + (mid + 1));
+            }else {
+                console.log('数组中没有要查找的数据');
+            } */
+
+
+        //排序算法
+        /* var num = [30, 10, 18, 56, 22];
+        for (var i = 0; i < num.length - 1; i++) {
+            for (var j = 0; j < num.length - 1 - i; j++) {
+                if (num[j] > num[j+1]) {
+                    var temp = num[j];
+                    num[j] = num[j + 1];
+                    num[j + 1] = temp;
+                }
+            }
+        }
+        console.log(num); */
+
+
+        // 回文字符串判断
+        /* var str = prompt('请输入一段字符串');
+        var  flag = true, before = 0, after = str.length - 1;
+        while (str[before] < str[after]) {
+            if (before !== after) {
+                flag = false;
+                break;
+            }
+            before++;
+            after--;
+        }
+        if (flag) {
+            console.log('yes');
+        }else {
+            console.log('no');
+        } */
+
+
+
+        // 1.使用一个数组来记录用户喜欢的歌曲的名称，编写代码实现如下功能：
+        // 循环输入歌曲的名称并插入到数组中，一直到输入的歌曲名称是“quit”为止
+        // 要求，插入后数组中的歌曲名称是有序的（不能使用插入后排序来完成，应该是先确定位置再插入）
+        /* var songData = [];
+        var song = prompt('请输入歌曲:');
+        while (song != 'quit') {
+            songData.push(song);
+            var song = prompt('请输入歌曲:');
+            // 插入排序算法
+            var  len = songData.length;
+            var preIndex, current;
+            for (var i = 0; i < len; i++) {  
+                preIndex = i - 1; // 当前前一个index开始对比
+                current = songData[i];  // 当前需要插入数据，用current参数暂存起来
+                while (preIndex >= 0 && current < songData[preIndex]) { // 进入二次循环，用来对比排序完成数与当前需要插入的数据
+                    songData[preIndex + 1] = songData[preIndex];
+                    preIndex--;
+                }
+                songData[preIndex + 1] = current;
+        }
+            }
+        console.log(songData); */
+
+
+        
+
+
+        // 2.输入年份和月份，然后按照如下方式打印日历（假设输入的年份是2022，月份是7）：
+        // 2022年7月
+        // 日 一 二 三 四 五 六
+        //               1  2
+        // 3 4 5 6 7 8 9 10 11
+        // ...
+        // 31
+
+        // 输入年份月份
+        var year = parseInt(prompt('请输入年份:'));
+        var month = parseInt(prompt('请输入月份:'));
+        // 计算一号和1900年一月一号相差多少天
+        var total = 0;
+        // 累加相差的整年的天数
+        for (var y = 1900 ; y < year ; y++){
+            total += 365;
+            if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0){
+                total++;
+            }
+        }
+        // 累加相差的整月的天数
+        for (var m = 1 ; m < month ; m++){
+            switch(m){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:total += 31;break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:total += 30; break;
+                case 2:
+                    total += 28;
+                    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+                        total++;
+                    }
+            }
+        }
+        // 计算一号是星期几
+        var first = total % 7 + 1;
+        first = first == 7 ? 0 : first;
+
+        for (var m = 1 ; m < month ; m++){
+            switch(month){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:total = 31;break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:total = 30; break;
+                case 2:
+                    total = 28;
+                    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+                        total++;
+                    }
+            }
+        }
+        // 打印日历
+        var space = '&emsp;&emsp;&emsp;';
+        document.write(year + '年' + month + '月' + '<br>')
+        document.write('日&emsp;&emsp;&emsp;一&emsp;&emsp;&emsp;二&emsp;&emsp;&emsp;三&emsp;&emsp;&emsp;四&emsp;&emsp;&emsp;五&emsp;&emsp;&emsp;六' + '<br>')
+        var cnt = 0 ;
+        for (var i = 0 ; i < first ; i++ , cnt++){
+            document.write('&emsp;&emsp;&emsp;&emsp;');
+        }
+        for (var i = 1 ; i <= total ; i++){
+            document.write(i + "&emsp;&emsp;&emsp;");
+            cnt++;
+            if (cnt % 7 == 0){
+                document.write('<br>')
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        // 输出指定范围内的随机数
+        /* function getRandom(min, max) {
+            var num = Math.floor(Math.random() * (max - min + 1)) + min;
+            console.log(num);
+        }
+        getRandom(3,5); */
+
+        // 查找字符串 “abcoefoxyozzopp”, 打印其中每个元素每次出现的位置及出现的次数
+        /* function find(src, target) {
+            var result = {
+                position: [],
+                count: 0
+            };
+            var i = src.indexOf(target);
+            while(i != -1) {
+                result.position.push(i);
+                result.count++;
+                i = src.indexOf(target, i+1)
+            }
+            return result;
+        }
+        var r = find("abcoefoxyozzopp", "o");
+        console.log(r); */
+
+
+        //输出字符串 “abcoefoxyozzopp”中出现次数最多的字符，并统计其次数以及字符
+        /* function find(str) {
+            var obj = {};
+            for (var i = 0; i < str.length; i++) {
+                var char = str.charAt(i);
+                if (obj[char]) {
+                    obj[char]++;
+                }else {
+                    obj[char] = 1;
+                }
+            }
+            // console.log(obj);
+            var max = 0;
+            var ch = '';
+            for (var k in obj) {
+                if ((obj[k]) > max) {
+                    max = obj[k];
+                    ch = k;
+                }
+            }
+            console.log(ch, max);
+        }
+        find("abcoefoxyozzopp"); */
+
+
+        // 编写一个函数，传入一个函数一个邮箱地址，取出其中的邮箱名和服务器名称
+        /* function find(str) {
+            var mailName = str.substring(0, str.indexOf("@"));
+            var serverName = str.substr(str.lastIndexOf("@") + 1);
+            console.log(mailName);
+            console.log(serverName);
+        }
+        find("2710539183@qq.con"); */
+
+
+
+        // 统计一个字符串某个字符出现的次数
+        /* function showCount(str, target) {
+            var count = 0;
+            var i = str.indexOf(target);
+            while (i != -1) {
+                count++;
+                i = str.indexOf(target, i+1);
+            } 
+            return count;
+        } */
+
+        /* function getCount(str, target) {
+            var arr = str.split(target);
+            // console.log(arr);
+            return arr.length - 1;
+        }
+        var r = getCount("abcda", "a");
+        console.log(r); */
+        
+        // 获得Date的总毫秒数，距离1970年1月1日过了的多少毫秒数
+        /* var date = new Date();
+        console.log(date.valueOf());
+        console.log(date.getTime());
+        var date1 = +new Date();
+        console.log(date1);
+        console.log(Date.now()); */
+
+        // 倒计时
+        function countDown(time) {
+            var nowTime = +new Date(); // 获取当前时间的总毫秒数
+            var inputTime = +new Date(time);    // 返回的是用户输入时间
+            var times = (inputTime - nowTime) / 1000;  // 把毫秒数转化为秒数
+            d = parseInt(times / 60 / 60 / 24);
+            d = d < 10 ? '0' + d : d;   // 计算天数
+            h = parseInt(times / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;    // 计算小时数
+            m = parseInt(times / 60 % 60);
+            m = m < 10 ? '0' + m : m;      //计算分钟数
+            s = parseInt(times % 60);
+            s = s < 10 ? '0' + s : s;       // 计算秒数
+            return d + '天' + h + '时' + m + '分' + s + '秒';
+        }
+        console.log(countDown('2022-7-15 17:30:00'));
+        var date = new Date();
+        console.log(date);  
+        
+        
+        // ECMAscript 复习ppt
+        </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>用户信息</h1>
+    <form action="javascript:;" method="post" id="myform">
+        <table>
+            <tr>
+                <td>姓名：</td>
+                <td><input type="text" name="username" id="username"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>年龄：</td>
+                <td><input type="number" name="age" id="age"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>家庭住址：</td>
+                <td><input type="text" name="address" id="address"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>联系电话：</td>
+                <td><input type="number" name="phoneNumber" id="phone"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" name="pwd" id="pwd"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input type="password" name="confirmPwd" id="con-pwd"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="sub" value="提交">
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            
+        </table>
+    </form>
+    <script>
+        var username = document.querySelector('#username');
+        var age = document.querySelector('#age');
+        var address = document.querySelector('#address');
+        var phone = document.querySelector('#phone');
+        var pwd = document.querySelector('#pwd');
+        var conPwd = document.querySelector('#con-pwd');
+        username.addEventListener('blur', function() {
+            var reg = /^\W{2,4}$/;
+            var td = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                td.innerHTML = '姓名不合法';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '合法姓名';
+                td.style.color = 'green';
+            }
+        });
+        age.addEventListener('blur', function() {
+            var reg = /^[7-9]{1}|1[0-8]{1}$/;
+            var td = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                td.innerHTML = '年龄不符合';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '年龄符合';
+                td.style.color = 'green';
+            }
+        });
+        address.addEventListener('blur', function() {
+            var reg = /^\W{3,}$/;
+            var td = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                td.innerHTML = '家庭住址不合法';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '家庭住址合法';
+                td.style.color = 'green';
+            }
+        });
+        phone.addEventListener('blur', function() {
+            var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+            var td = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                td.innerHTML = '手机号码不合法';
+                td.style.color = 'red';
+            }else {
+                td.innerHTML = '有效的手机号码';
+                td.style.color = 'green';
+            }
+        }); 
+        pwd.addEventListener('blur', function() {
+            var reg = /^\w{6,10}$/ig;
+            var pwdTd = this.parentNode.nextElementSibling;
+            if (!reg.test(this.value)) {
+                pwdTd.innerHTML = '密码的长度不能小于6';
+                pwdTd.style.color = 'red';
+            }else {
+                pwdTd.innerHTML = '合法密码';
+                pwdTd.style.color = 'green';
+            }
+        });
+        conPwd.addEventListener('blur', function() {
+            var reg = /^\w{6,10}$/ig;
+            var pwdTd = this.parentNode.nextElementSibling;
+            if (this.value.trim() == '') {
+                pwdTd.innerHTML = '密码不能为空，请先填写密码';
+                pwdTd.style.color = 'red';
+            }else {
+                if (pwd.value.trim() == this.value.trim()) {
+                    pwdTd.innerHTML = '密码一致';
+                    pwdTd.style.color = 'green';
+                }else {
+                    pwdTd.innerHTML = '密码不一致';
+                    pwdTd.style.color = 'red';
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            position: relative;
+            width: 1190px;
+            margin: 0 auto;
+        }
+        #close {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../images/luzhou.jpg" alt="">
+        <img src="../images/close.jpg" alt="" id="close">
+    </div>
+    <script>
+        // 1. setTimeout(调用函数，延迟时间), 延时毫秒数默认为 0  函数只调用一次
+
+        /* 
+        // 书写方式 1
+        setTimeout(function() {
+            console.log('时间到了');
+        }, 5000);
+        // 书写方式 2
+        function callback() {
+            console.log('时间到了');
+        }
+        setTimeout(callback, 3000); 
+        */
+
+
+        // 1.点击关闭图片，关闭广告
+        var close = document.querySelector('#close');
+        close.onclick = function() {
+            // 事件处理函数中的this指向于事件源对象
+            console.log(this);
+            var div = this.parentNode;
+            div.style.display = 'none';
+        }
+
+        // 2. 设置定时器 ， 5秒钟之后自动关闭广告
+        function callback() {
+            var div = close.parentNode;
+            div.style.display = 'none';
+        }
+        var timer = setTimeout(callback, 5000);
+
+        // 2. 停止计时器 window.clearTimeout(定时器ID)  clearTimeout(timer);
+    </script>
+</body>
+</html>

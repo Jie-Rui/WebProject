@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 600px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        table tr {
+            height: 40px;
+        }
+        th {
+            background-color: #ccc;
+        }
+
+        table thead  tr th,
+        table tbody tr td {
+            border: 1px solid #666;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        // 1. 创建数组对象元素
+        var obj = [
+            {
+                name: '魏璎珞',
+                subject: 'javascript',
+                score: 100
+            },
+            {
+                name: '弘历',
+                subject: 'javascript',
+                score: 90
+            },
+            {
+                name: '傅恒',
+                subject: 'javascript',
+                score: 99
+            },
+            {
+                name: '明玉',
+                subject: 'javascript',
+                score: 89
+            }
+        ];
+        // 2. 创建要增加的元素标签
+        var tbody = document.querySelector('tbody');
+        // 3. 创建 tr 标签，有几个数组元素就创建几个
+        for (var i = 0; i < obj.length; i++) {
+            var tr = document.createElement('tr')
+            tbody.appendChild(tr);
+        // 4. 创建 td 标签，有几个对象就创建几个
+            for (k in obj[i]) {
+                var td = document.createElement('td');
+                td.innerHTML = obj[i][k];
+                tr.appendChild(td);
+            }
+        // 5. 创建最后一个td ,给 td 添加 a 删除标签
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">删除</a>';
+            tr.appendChild(td);
+        }
+        // 6. 给 a 删除标签绑定删除事件
+        var del = document.querySelectorAll('a');
+        // 7. for 循环给每个 a 绑定
+        for (var i = 0; i < del.length; i++) {
+            del[i].onclick = function() {
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+</html>

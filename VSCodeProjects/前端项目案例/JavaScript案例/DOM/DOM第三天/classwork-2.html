@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 500px;
+            margin: 0 auto;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 根据当前时间显示对应的图片 0-8：早上好  9-12：上午好 13-18：下午好  19-24：晚上好 -->
+    <div class="content">
+        <div class="hide">早上好：<img src="../images/z.gif" alt=""></div>
+        <div class="hide">上午好：<img src="../images/s.gif" alt=""></div>
+        <div class="hide">下午好：<img src="../images/x.gif" alt=""></div>
+        <div class="hide">晚上好：<img src="../images/w.gif" alt=""></div>
+    </div>
+    <script>
+        var date = new Date();
+        var h = date.getHours();
+        console.log(h);
+        var dv = document.querySelector('.content');
+        if (h >= 19) {
+            dv.children[3].className = 'show';
+        }else if(h >= 13 ) {
+            dv.children[2].className = 'show';
+        }else if(h >= 9) {
+            dv.children[1].className = 'show';
+        }else {
+            dv.children[0].className = 'show';
+        }
+    </script>
+</body>
+</html>
