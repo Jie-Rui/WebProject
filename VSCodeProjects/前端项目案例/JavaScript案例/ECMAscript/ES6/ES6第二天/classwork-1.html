@@ -8,6 +8,20 @@
 </head>
 <body>
     <script>
+        let [a,b,c,d] = [1,2,3,4];
+        console.log(a);
+
+        // 对象没有作用域，箭头函数中的 this 指向的是全局作用域
+        var age = 100;
+        var obj = {
+            age: 20,
+            say: () => {
+                alert(this.age)
+            }
+        }
+        obj.say();
+        // 剩余参数做形参 sum(...args)
+        // 剩余参数会直接把sum(1,2,3) 转换为 sum([1,2,3]) 数组形式
         
     </script>
 </body>
