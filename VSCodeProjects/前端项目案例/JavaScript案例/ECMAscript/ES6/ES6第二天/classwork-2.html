@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 100px;
+            margin: 100px auto;
+            border: 1px solid pink;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button>第一个</button>
+        <button>第二个</button>
+        <button>第三个</button>
+    </div>
+    <script>
+        var btns = document.querySelectorAll('button');
+        var result = btns.forEach((val, index) => {
+            val.onclick = function() {
+                alert(index);
+            }
+            return result;
+        });
+    </script>
+
+    <!-- 使用解构赋值交换两个变量的值 -->
+
+    <script>
+        let person = {name: 'zs', age: 18}
+        let {name:age, age:name} = person;
+        console.log(name);
+        console.log(age);
+
+        
+    </script>
+
+    <!-- 下面程序执行结果 -->
+    <script>
+        function push(array, ...items) {
+            items.forEach(function(item) {
+                array.push(item);
+                console.log(item);
+            });
+            console.log(array);
+        }
+        var a = [1,2];
+        push(a,1,2,3)
+    </script>
+    
+    <!-- 下面程序执行结果 -->
+    <script>
+        const headAndTail = (head, ...tail) => [head, tail];
+        console.log(headAndTail(6,2,3,4,5));
+
+    </script>
+</body>
+
+</html>
