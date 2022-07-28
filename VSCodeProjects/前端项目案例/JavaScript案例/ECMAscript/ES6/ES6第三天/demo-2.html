@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 100px;
+            margin: 100px auto;
+            border: 1px solid pink;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 2. 点击按钮改变页面上的文字大小 -->
+    <div class="box">
+        <button>按钮20</button>
+        <button>按钮40</button>
+        <button>按钮60</button>
+        <p>闭包把我搞的</p>
+    </div>
+    <script>
+        var btn = document.querySelectorAll('button');
+        var p = document.querySelector('p');
+        for (let i = 0; i < btn.length; i++) {
+            (function(index) {
+                btn[i].onclick = function() {
+                    p.style.fontSize = 20 * (index + 1) + 'px'
+                }
+            })(i);
+        }
+    </script>
+</body>
+</html>

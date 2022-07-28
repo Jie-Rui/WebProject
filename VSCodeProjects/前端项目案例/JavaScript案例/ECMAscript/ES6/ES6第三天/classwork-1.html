@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 6种函数 -->
+    <script>
+        // 1. 命名函数 function fn() {} 2. 匿名函数  var fn = function() {} 3.构造函数 new Function() {}
+        // instanceof 运算符，判断前边的对象是不是后边的类的实例
+        // 1. 普通函数 2.对象的方法 3. 立即执行函数 4. 事件处理函数 5. 定时器函数 6. 构造函数
+        // 1. function() {};
+        /* 2. var obj = {
+            dogSay: function() {},
+        } */
+        // 3. (function() {})(); // this 指向 widow
+        // 4. setInterval(function() {}, 3000)
+        /* 6. function Person(name, age) {
+                this.name = name;
+                this.age = age;
+        }  // this 指向 person*/
+    </script>
+
+    <!-- 改变 this 的指向 -->
+    <script>
+        function fn(x, y) {
+            console.log(this);
+            console.log(x + y);
+        }
+        var obj = {
+            name: 'zs',
+        }
+        fn(1, 2);
+        fn.call(obj, 1, 2);
+        fn.apply(obj, [1, 2]);
+        var result = fn.bind(obj, 1, 2);
+        result();
+    </script>
+</body>
+</html>

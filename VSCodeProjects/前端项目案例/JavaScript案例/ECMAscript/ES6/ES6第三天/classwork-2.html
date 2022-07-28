@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 100px;
+            margin: 100px auto;
+            border: 1px solid pink;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <button>第一个</button>
+        <button>第二个</button>
+        <button>第三个</button>
+    </div>
+    <script>
+        var btn = document.querySelectorAll('button');
+        for (var i = 0; i < btn.length; i++) {
+            (function (index) {
+                btn[i].onclick = function () {
+                    alert(index);
+                }
+            })(i);
+        }
+    </script>
+
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+
+    <!-- 3秒钟后打印所有的 li  用闭包实现 -->
+    <script>
+        var lis = document.querySelectorAll('ul li');
+        for (var i = 0; i < lis.length; i++) {
+            (function (index) {
+                setTimeout(function () {
+                    console.log(lis[index].innerHTML);
+                }, 3000);
+            })(i);
+        }
+    </script>
+
+    <!-- 闭包应用-计算打车价格  -->
+    <script>
+        // 打车起步价13(3公里内),  之后每多一公里增加 5块钱.  用户输入公里数就可以计算打车价格
+        // 如果有拥堵情况,总价格多收取10块钱拥堵费
+        // function fn() {};
+        // fn();
+        var n = prompt('请您输入公里数：');
+        var flag = confirm('是否拥堵？');
+        var takeCar = (function () {
+            var start = 13; // 起步价  
+            var total = 0; // 总价  
+            return {
+                // 正常的总价
+                price: function (n) {
+                    if (n <= 3) {
+                        total = start;
+                    } else {
+                        total = start + (n - 3) * 5
+                    }
+                    return total;
+                },
+                // 拥堵之后的费用
+                yd: function (flag) {
+                    return flag ? total + 10 : total;
+                }
+            }
+        })();
+        console.log('正常价格：' + takeCar.price(n)); 
+        console.log('拥堵的价格：' + takeCar.yd(flag)); 
+    </script>
+</body>
+
+</html>
