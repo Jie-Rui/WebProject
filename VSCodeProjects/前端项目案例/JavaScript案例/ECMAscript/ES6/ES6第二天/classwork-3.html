@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // 模板字符串，用反引号定义
+        let obj = {
+            name: 'zs',
+            age: 18,
+            score: 99
+        }
+        let htmlStr = `<span>name: ${obj.name}</span></br>        
+        <span>age: ${obj.age}</span></br> 
+        <span>score: ${obj.score}</span>`;
+        document.querySelector('.box').innerHTML = htmlStr;
+
+        // repeat() 重复字符串
+        console.log('x'.repeat(3));
+
+        // Set 函数 const s = new Set();
+        const set = new Set([1, 3, 5, 6, 8, 2, 1, 8]);
+        console.log(set); // 输出结果 {1,3,5,6,8,2}
+        console.log([...set]);
+
+        // Array.from()  将对象转换为数组
+        let arrayLike = {
+            '0': 'a',
+            '1': 'b',
+            '2': 'c',
+            length: 3
+        };
+        var arr = Array.from(arrayLike);
+        console.log(arr);
+
+
+        // 定义对象属性和方法简洁表达方法
+        var ref = 'some value';
+        const atom = {
+            ref,
+            value: 1,
+            addValue(value) {
+                return atom.value + value;
+            },
+        };
+        console.log(atom.addValue(ref));
+
+
+        var a = [];
+        for (let i = 0; i < 10; i++) {
+            a[i] = function () {
+                console.log(i);
+            };
+        }
+        a[6]();
+    </script>
+</body>
+
+</html>
