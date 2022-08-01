@@ -1,16 +1,16 @@
-window.onload = function() {
+window.onload = function () {
     function Mine(tr, td, mineNum) {
         this.tr = tr; // tr表示行数  
         this.td = td; // td表示列数  
         this.mineNum = mineNum; // mineNum表示雷的数量
-    
+
         this.squares = []; // 存储所有方块的信息，是一个二维数组，按照行与列的顺序排放，存取都按照行列方式
         this.tds = []; // 存储所有单元格的DOM
         this.surplusMine = mineNum; // 剩余雷的数量
         this.allRight = false; // 右击标注的小红旗是否全部是雷，用来判断用户是否游戏成功
         this.parent = document.querySelector('.gameBox');
     }
-    
+
     // 生成 n个不重复的数字
     Mine.prototype.randomNum = function () {
         var square = new Array(this.tr * this.td); // 生成一个空数组  长度为格子总数
@@ -23,7 +23,7 @@ window.onload = function() {
         });
         return square.slice(0, this.mineNum);
     };
-    
+
     Mine.prototype.init = function () {
         // this.randomNum();
         var rn = this.randomNum(); // 雷在格子里的位置
@@ -42,7 +42,7 @@ window.onload = function() {
                         x: j,
                         y: i
                     };
-    
+
                 } else {
                     this.squares[i][j] = {
                         type: 'number',
@@ -53,20 +53,20 @@ window.onload = function() {
                 }
             }
         }
-    
+
         this.updateNum();
         this.createDom();
-    
+
         this.parent.oncontextmenu = function () {
             return false;
             // 阻止右键出菜单事件
         }
-    
+
         // 剩余雷数
         this.mineNumDom = document.querySelector('.mineNum');
         this.mineNumDom.innerHTML = this.surplusMine;
     };
-    
+
     // 创建表格
     Mine.prototype.createDom = function () {
         var This = this;
@@ -79,25 +79,25 @@ window.onload = function() {
                 this.tds[i][j] = domTd; // 把所有创建的td添加到数组当中
                 domTd.pos = [i, j]; // 把格子对应的行和列村到格子身上，为了下面通过这个值去数组里面取到对应的数据
                 domTd.onmousedown = function () {
-                    This.play(event, this); // 大的This 指的是实例对象   小的this指的是点击的domTd 
+                    This.play(e, this); // 大的This 指的是实例对象   小的this指的是点击的domTd 
                 };
-    
+
                 // if (this.squares[i][j].type == 'mine') {
                 //     domTd.className = 'mine';
                 // }
                 // if (this.squares[i][j].type == 'number') {
                 //     domTd.innerHTML = this.squares[i][j].value;
                 // }
-    
+
                 domTr.appendChild(domTd);
             }
             table.appendChild(domTr);
         }
         this.parent.innerHTML = ''; // 避免多次点击创建多个
-    
+
         this.parent.appendChild(table);
     };
-    
+
     // 找某个方格周围的八个格子
     Mine.prototype.getAround = function (square) {
         var x = square.x,
@@ -123,7 +123,7 @@ window.onload = function() {
         }
         return result;
     }
-    
+
     // 更新所有的数字
     Mine.prototype.updateNum = function () {
         for (var i = 0; i < this.tr; i++) {
@@ -139,7 +139,7 @@ window.onload = function() {
             }
         }
     };
-    
+
     Mine.prototype.play = function (ev, obj) {
         var This = this;
         if (ev.which == 1 && obj.className != 'flag') { // 后面的条件是为了用户右键之后不能点击
@@ -147,12 +147,12 @@ window.onload = function() {
             var curSquare = this.squares[obj.pos[0]][obj.pos[1]];
             var cl = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
             // cl 存储className
-    
+
             if (curSquare.type == 'number') {
                 // 用户点击的是数字
                 obj.innerHTML = curSquare.value;
                 obj.className = cl[curSquare.value];
-    
+
                 // 点到了数字零
                 if (curSquare.value == 0) {
                     /* 
@@ -167,7 +167,7 @@ window.onload = function() {
                                     II.找四周（如果四周的值不为零，那就显示到这，不需要再找了）
                                         。。。。。。
                      */
-    
+
                     obj.innerHTML = ''; // 显示为空
                     function getAllZero(square) {
                         var around = This.getAround(square); // 找到了周围N个格子
@@ -175,7 +175,7 @@ window.onload = function() {
                             var x = around[i][0]; // 行
                             var y = around[i][1]; // 列
                             This.tds[x][y].className = cl[This.squares[x][y].value];
-    
+
                             if (This.squares[x][y].value == 0) {
                                 // 如果以某个格子为中心，找到的某个格子为零，那就接着调用（递归）
                                 if (!This.tds[x][y].check) {
@@ -183,17 +183,17 @@ window.onload = function() {
                                     This.tds[x][y].check = true;
                                     getAllZero(This.squares[x][y]);
                                 }
-    
+
                             } else {
                                 // 如果以某个格子为中心找到的四周的值不为零，就把数字显示出来
                                 This.tds[x][y].innerHTML = This.squares[x][y].value;
                             }
                         }
-    
+
                     }
                     getAllZero(curSquare);
                 }
-    
+
             } else {
                 // 用户点击的是雷
                 this.gameOver(obj);
@@ -206,19 +206,19 @@ window.onload = function() {
                 return;
             }
             obj.className = obj.className == 'flag' ? '' : 'flag'; // 切换calss 有无
-    
+
             if (this.squares[obj.pos[0]][obj.pos[1]].type == 'mine') {
                 this.allRight = true;
             } else {
                 this.allRight = false;
             }
-    
+
             if (obj.className == 'flag') {
                 this.mineNumDom.innerHTML = --this.surplusMine;
             } else {
                 this.mineNumDom.innerHTML = ++this.surplusMine;
             }
-    
+
             if (this.surplusMine == 0) {
                 // 剩余的雷的数量为0，表示用户已经标完小红旗了，这时候要判断游戏是成功还是结束
                 if (this.allRight == true) {
@@ -229,7 +229,7 @@ window.onload = function() {
                             this.tds[i][j].onmousedown = null;
                         }
                     }
-    
+
                 } else {
                     alert('游戏失败');
                     this.gameOver();
@@ -237,7 +237,7 @@ window.onload = function() {
             }
         }
     }
-    
+
     // 游戏失败函数
     Mine.prototype.gameOver = function (clickTd) {
         /* 
@@ -257,10 +257,10 @@ window.onload = function() {
             clickTd.style.backgroundColor = '#f00';
         }
     }
-    
+
     // var mine = new Mine(28, 28, 99);
     // mine.init();
-    
+
     // 添加 button 的功能
     var btns = document.querySelectorAll('button');
     var mine = null; // 用来存储生成的实例
