@@ -78,7 +78,7 @@ window.onload = function () {
                 var domTd = document.createElement('td');
                 this.tds[i][j] = domTd; // 把所有创建的td添加到数组当中
                 domTd.pos = [i, j]; // 把格子对应的行和列村到格子身上，为了下面通过这个值去数组里面取到对应的数据
-                domTd.onmousedown = function () {
+                domTd.onmousedown = function (e) {
                     This.play(e, this); // 大的This 指的是实例对象   小的this指的是点击的domTd 
                 };
 
