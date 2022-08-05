@@ -1,4 +1,14 @@
 {
+  "name": "express-case",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01.使用express创建服务器.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "express": "^4.18.1"
   }
