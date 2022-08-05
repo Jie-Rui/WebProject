@@ -4,7 +4,6 @@ const http = require('http');
 const fs = require('fs');
 // 1.3 导入 path 路径处理模块
 const path = require('path');
-const { log } = require('console');
 // 2.1 创建 web 服务器
 const server = http.createServer();
 // 2.2 为 web 服务器绑定 request 事件
@@ -31,7 +30,7 @@ server.on('request', (req, res) => {
         if(err) return res.end('404 Not Found');
         // 4.3 读取文件成功后，将读取成功的文件内容响应给客户端
         res.end(dataStr);
-    })
+    });
 });
 // 2.3 启动 web 服务器
 server.listen(80, () => {
