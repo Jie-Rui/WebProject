@@ -1,0 +1,8 @@
+{
+  "students": [
+    { "no": 1, "name": "张三", "birthday": "2022-01-01", "address": "南昌" },
+    { "no": 3, "name": "王五", "birthday": "1999-12-05", "address": "广东" },
+    { "no": 4, "name": "李四", "birthday": "2000-10-30", "address": "吉安" },
+    { "no": 5, "name": "Rookie", "birthday": "2020-11-08", "address": "四川" }
+  ]
+}
