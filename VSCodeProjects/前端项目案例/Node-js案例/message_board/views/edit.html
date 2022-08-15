@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	{{include './header.html'}}
+	<title>编辑</title>
+	<body>
+		<!-- header -->
+		<div class="jumbotron">
+			<div class="container">
+				<h1>编辑</h1>
+				<p>删除</p>
+			</div>
+		</div>
+		<!-- 留言 -->
+		<!-- <form action="/save" method="post"> -->
+		<div class="container">
+			<div class="row">
+				{{each data}}
+				<div class="col-lg-12">
+					<input
+						type="text"
+						class="form-control"
+						disabled
+						id="id"
+						value="{{$value.id}}"
+						style="margin-bottom: 4px"
+					/>
+					<input
+						id="name"
+						type="text"
+						class="form-control"
+						value="{{$value.name}}"
+						style="margin-bottom: 4px"
+					/>
+					<textarea id="content" class="form-control" rows="3">
+{{$value.content}}</textarea
+					>
+
+					<a
+						href="JavaScript:;"
+						class="form-control btn btn-info"
+						style="margin: 10px 0"
+						id="edit"
+						>提交编辑</a
+					>
+					<a
+						href="JavaScript:;"
+						class="form-control btn btn-danger"
+						id="delete"
+						>删除</a
+					>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<!-- </form> -->
+
+		<script type="text/javascript">
+			// 提交
+			$("#edit").click(function () {
+				let name = $("#name").val();
+				let content = $("#content").val();
+				let id = $("#id").val();
+				if (name && content) {
+					$.ajax({
+						url: "/edit",
+						type: "POST",
+						dataType: "json",
+						data: {
+							id: id,
+							name: name,
+							content: content,
+						},
+						success: function (res) {
+							if (res.code == 200) {
+								alert("操作成功，跳转页面");
+								window.location.href = "/";
+							}
+						},
+					});
+				} else {
+					alert("不能为空");
+				}
+			});
+
+			// 删除
+			$("#delete").click(function () {
+				let id = $("#id").val();
+				if (id) {
+					$.ajax({
+						url: "/delete",
+						type: "POST",
+						dataType: "json",
+						data: {
+							id: id,
+						},
+						success: function (res) {
+							if (res.code == 200) {
+								alert("操作成功，跳转页面");
+								window.location.href = "/";
+							}
+						},
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

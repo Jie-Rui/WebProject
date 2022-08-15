@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	{{include './header.html'}}
+	<title>{{title}}</title>
+	<body>
+		<!-- header -->
+		<div class="jumbotron">
+			<div class="container">
+				<h1>留言板</h1>
+				<p>message board</p>
+			</div>
+		</div>
+		<!-- 留言 -->
+		<!-- <form action="/save" method="post"> -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<input
+						id="name"
+						type="text"
+						class="form-control"
+						placeholder="请输入留言人姓名"
+						style="margin-bottom: 4px"
+					/>
+					<div class="input-group">
+						<textarea
+							id="content"
+							class="form-control"
+							rows="3"
+							placeholder="请输入留言内容"
+						></textarea>
+						<span class="input-group-btn">
+							<button
+								id="submit"
+								class="btn btn-primary btn-lg"
+								type="submit"
+								style="height: 74px"
+							>
+								留言
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- </form> -->
+		<!-- 列表 -->
+		<br />
+		<div class="container">
+			<h4 style="margin-bottom: 6px">最新留言</h4>
+			{{if data.length>0}}
+			<div class="list-group">
+				{{each data item index}}
+				<a href="/edit?id={{item.id}}" class="list-group-item">
+					{{item.name}}：{{item.content}}
+					{{if (item.state!=0)}}
+					<span class="badge">已删除</span>
+					{{/if}}
+				</a>
+				{{/each}}
+			</div>
+			{{else}}
+			<p class="help-block">还没有人说话哦...</p>
+			{{/if}}
+		</div>
+	</body>
+	<script type="text/javascript">
+		// 提交
+		$("#submit").click(function () {
+			let name = $("#name").val();
+			let content = $("#content").val();
+			if (name && content) {
+				$.ajax({
+					url: "/add",
+					type: "POST",
+					dataType: "json",
+					data: {
+						name: name,
+						content: content,
+					},
+					success: function (res) {
+						if (res.code == 200) {
+							alert("操作成功，即将刷新页面");
+							window.location.href='/';
+						}
+					},
+				});
+			} else {
+				alert("不能为空");
+			}
+		});
+	</script>
+</html>
