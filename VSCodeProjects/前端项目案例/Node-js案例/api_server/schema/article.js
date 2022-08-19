@@ -1,4 +1,4 @@
-const joi = require('@hapi/joi')
+const joi = require('joi')
 
 // 分别定义 标题、分类Id、内容、发布状态的校验规则
 const title = joi.string().required()

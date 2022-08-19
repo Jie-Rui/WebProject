@@ -1,7 +1,7 @@
 // 导入数据库操作模块
 const db = require('../db/index')
 // 导入处理密码的模块
-const bcrypt = require('bcryptjs')
+// const bcrypt = require('bcryptjs')
 
 // 获取用户基本信息的处理函数
 exports.getUserInfo = (req, res) => {
@@ -50,13 +50,18 @@ exports.updatePassword = (req, res) => {
     if (results.length !== 1) return res.cc('用户不存在！')
 
     // 判断密码是否正确
-    const compareResult = bcrypt.compareSync(req.body.oldPwd, results[0].password)
-    if (!compareResult) return res.cc('旧密码错误！')
+    // const compareResult = bcrypt.compareSync(req.body.oldPwd, results[0].password)
+    // if (!compareResult) return res.cc('旧密码错误！')
+    
+    if (req.body.oldPwd !== results[0].password) return res.cc('旧密码错误');
 
     // 定义更新密码的 SQL 语句
-    const sql = `update ev_users set password=? where id=?`
+    const sql = `update ev_users set password=? where id=?`;
+
     // 对新密码进行加密处理
-    const newPwd = bcrypt.hashSync(req.body.newPwd, 10)
+    // const newPwd = bcrypt.hashSync(req.body.newPwd, 10)
+
+    const newPwd = req.body.newPwd;
     // 调用 db.query() 执行 SQL 语句
     db.query(sql, [newPwd, req.user.id], (err, results) => {
       // 执行 SQL 语句失败
