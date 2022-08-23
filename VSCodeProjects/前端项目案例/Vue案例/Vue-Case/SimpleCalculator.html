@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易计算器</title>
+</head>
+<body>
+    <div id="app">
+        数值A:<input type="number" v-model.number="A"><br>
+        数值B:<input type="number" v-model.number="B"><br>
+        <button @click="plus">加</button>
+        <button @click="sub">减</button>
+        <button @click="mul">乘</button>
+        <button @click="dev">除</button><br>
+        计算结果:<h2 v-text="result"></h2>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                A: '',
+                B:'',
+                result: ''
+            },
+            methods: {
+                plus() {
+                    this.result = this.A + this.B;
+                },
+                sub() {
+                    this.result = this.A - this.B;
+                },
+                mul() {
+                    this.result = this.A * this.B;
+                },
+                dev() {
+                    this.result = this.A / this.B;
+                }
+            },
+        });
+    </script>
+</body>
+</html>

@@ -8,7 +8,16 @@
 </head>
 <body>
     <div id="app" >
-        <input type="text" @keyup.esc="clearInput">
+        <input v-model="text" @keyup.esc="clearInput">
+        <p>{{ text }}</p>
+        <hr>
+        <select v-model="city">
+            <option value="">请选择城市</option>
+            <option value="1">北京</option>
+            <option value="2">上海</option>
+            <option value="3">深圳</option>
+            <option value="4">南昌</option>
+        </select>
     </div>
     <script src="./lib/vue-2.6.12.js"></script>
     <script>
@@ -19,10 +28,13 @@
             data: {
                 username: 'Rookie',
                 count: 0,
+                text: 'Rich',
+                city: ''
             },
             methods: {
                 clearInput(e) {
                     e.target.value = '';
+                    this.text = '';
                 }
             },
         });
