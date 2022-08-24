@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侦听器作业</title>
+</head>
+<body>
+    <div id="app">
+        工资：<input type="number" v-model.number="salary"><br>
+        个人所得税：<h1>{{ money }}</h1>
+        
+
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                salary: '',
+                money:''
+            },
+            watch: {
+                // val 就是 salary 的值
+                salary(val) {
+                    if (val < 3500) {
+                        this.money =  0;
+                    }else {
+                        this.money =  val * 0.01;
+                    }
+                }
+            }
+            /* computed: {
+                money() {
+                    if (this.salary < 3500) {
+                        return  0;
+                    }else {
+                        return  this.salary * 0.01;
+                    }
+                }
+            } */
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" v-focus> -->
+        <input type="text" v-bgc="val">
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- <script>
+        Vue.directive('focus', {
+            inserted(el) {
+                el.focus()
+            }
+        })
+        const app = new Vue({
+            el: '#app',
+        });
+    </script> -->
+
+    <script>
+        Vue.directive('bgc', {
+            bind(el, binding) {
+                el.style.backgroundColor = binding.value.color;
+            }
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {
+                val: {
+                    color: 'red',
+                }
+            },
+        });
+    </script>
+</body>
+</html>

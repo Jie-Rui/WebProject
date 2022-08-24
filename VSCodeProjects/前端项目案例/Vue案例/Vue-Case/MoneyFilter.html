@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在金额数据前添加金钱符号</title>
+</head>
+<body>
+    <div id="app">
+        金钱符号：<input type="text" v-model="mark"><br>
+        金额：<input type="number" v-model="money"><br>
+        <h1>money: {{ money | capitalize(this.mark) }}</h1>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                mark:'$',
+                money: '800',
+            },
+            filters: {
+                capitalize(val,mark) {
+                    const reg = /^\d{1,}$/;
+                    if(reg.test(val)) {
+                        return mark + val;
+                    }else {
+                        return '请输入金额数字';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
