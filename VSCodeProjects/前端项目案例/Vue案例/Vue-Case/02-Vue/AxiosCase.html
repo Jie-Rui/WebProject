@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios的基本使用</title>
+</head>
+<body>
+    <button id="btn">请求</button>
+    <script src="./lib/axios.min.js"></script>
+    <script>
+        document.querySelector('#btn').addEventListener('click', async function() {
+            const {data: res} = await axios({
+                method: 'GET',
+                url: 'http://www.liulongbin.top:3006/api/getbooks',
+                params: {id: 1}
+            })
+            console.log(res);
+        })
+    </script>
+</body>
+</html>

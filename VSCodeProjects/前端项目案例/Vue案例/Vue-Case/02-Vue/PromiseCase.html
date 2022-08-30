@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise 的基本使用</title>
+</head>
+<body>
+    <script src="./lib/jquery-3.6.0.js"></script>
+    <script>
+        // resolve 是异步任务成功后的回调函数
+        // reject 是异步任务失败后的回调函数
+        var p = new Promise(function(resolve, reject) {
+            $.get('http://www.liulongbin.top:3006/api/getbooks', function(res, status, xhr) {
+                if (status === 'success') {
+                    resolve(res)
+                }else {
+                    reject(res)
+                }
+            })
+        })
+        // 调用 Promise 对象的 then 方法来执行异步任务
+        p.then(function(res) {
+            console.log('异步任务执行成功', res.data[0])
+        }, function(res) {
+            console.log('异步任务执行失败', res);
+        })
+    </script>
+</body>
+</html>

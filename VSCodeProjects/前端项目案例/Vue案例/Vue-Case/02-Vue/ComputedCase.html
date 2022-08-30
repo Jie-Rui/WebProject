@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <span>R: </span>
+            <input type="text" v-model.number="R">
+        </div>
+        <div>
+            <span>G: </span>
+            <input type="text" v-model.number="G">
+        </div>
+        <div>
+            <span>B: </span>
+            <input type="text" v-model.number="B">
+        </div>
+        <hr>
+
+        <div class="box" :style="{backgroundColor: rgb}">
+            {{ rgb }}
+        </div>
+        <button @click="show">按钮</button>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                R: 0,
+                G: 0,
+                B: 0
+            },
+            computed: {
+                rgb() {
+                    return `rgb(${this.R},${this.G},${this.B})`
+                }
+            },
+            methods: {
+                show() {
+                    console.log(this.rgb);
+                }
+            },
+
+        });
+    </script>
+</body>
+</html>

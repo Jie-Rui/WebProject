@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件插槽</title>
+</head>
+<body>
+    <div id="app">
+        <cart>
+            <header-cart slot="header"></header-cart>
+            <main-cart slot="main">2</main-cart>
+            <footer-cart slot="footer">3</footer-cart>
+        </cart>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        Vue.component('cart',{
+            template: `
+                <div>
+                    <header>
+                        <slot name="header"></slot>
+                    </header>
+                    <main>
+                        <slot name="main"></slot>
+                    </main>
+                    <footer>
+                        <slot name="footer"></slot>
+                    </footer>
+                </div>
+            `
+        });
+        Vue.component('header-cart', {
+            data() {
+                return {
+                    message: '我的商品'
+                }
+            },
+            template:`
+                <div>{{ message }}</div>
+            `
+        });
+        Vue.component('main-cart', {
+            data() {
+                return {
+                    goods: [
+                        {id:1, name:'TCL彩电',quantity: 1},
+                        {id:2, name:'空调',quantity: 1},
+                        {id:3, name:'海尔冰箱',quantity: 1},
+                        {id:4, name:'小米手机',quantity: 1}
+                    ],
+                }
+            },
+            template:`
+                <table>
+                    <tbody>
+                            <tr v-for="(good,index) in goods" :key="good.id">
+                                <td>{{good.id}}</td>    
+                                <td>{{good.name}}</td>    
+                                <td><button @click="sub(index)">-</button></td>    
+                                <td><input type="text" v-model.number="good.quantity"></td>    
+                                <td><button @click="plus(index)">+</button></td>    
+                                <td><a href="" @click.prevent="remove(index)">删除</a></td>    
+                            </tr>
+                    </tbody>
+                </table>
+            `,
+            methods: {
+                plus(index) {
+                    this.goods[index].quantity++;
+                },
+                sub(index) {
+                    if(this.goods[index].quantity <= 1) {
+                        return this.goods[index].quantity = 1
+                    }else {
+                        this.goods[index].quantity--;
+                    }
+                },
+                remove(index) {
+                    this.goods.splice(index, 1);
+                }
+            },
+        });
+        Vue.component('footer-cart', {
+            data() {
+                return {
+                    money: 123
+                }
+            },
+            template:`
+                <div><span>总价：{{ money }} </span><button>结算</button></div>
+            `
+        });
+        const app = new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+</html>
