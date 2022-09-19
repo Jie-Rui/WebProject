@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = ['小明','大黄','小黑','小红']
+        
+
+        // 查找到目标元素之后不会继续往下查找，跟 foreach 不同，foreach 是查找到目标元素之后会继续往下遍历
+        arr.some((item,index) => {
+            if (item == '大黄') {
+                console.log(index);
+            }
+        })
+    </script>
+</body>
+</html>
